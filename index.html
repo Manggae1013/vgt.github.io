@@ -69,16 +69,34 @@
     }
 
     .nav-links a {
-      padding: 6px 10px;
-      border-radius: 999px;
+      position: relative;        
+      padding: 6px 0;        
+      margin: 0 10px; 
       color: #c2d0dc;
+      border-radius: 0;        
     }
 
     .nav-links a:hover {
-      background-color: #12202c;
       color: #ffffff;
     }
 
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;        /* 底線離文字的距離，可以自己調 */
+      width: 100%;
+      height: 2px;
+      background-color: #ffffff;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.25s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+    
     .nav-menu-toggle {
       display: none;
       font-size: 14px;
