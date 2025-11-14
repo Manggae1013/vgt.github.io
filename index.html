@@ -126,7 +126,7 @@
 /* 有 mega menu 的那顆 li，拉大一點 hover 區 */
     .nav-item.has-mega {
       /* 這個 li 不要 position: relative，避免方塊以它為基準歪掉 */
-      padding-bottom: 16px;  /* 保留這個，避免滑鼠移到下面時 hover 掉 */
+      padding-bottom: 0;  /* 保留這個，避免滑鼠移到下面時 hover 掉 */
     }
 /* ===== 集團 mega menu 方塊 ===== */
     .mega-menu {
@@ -721,60 +721,137 @@
         </a>
       </div>
 
-      <nav class="nav-links">
-        <ul>
-          <!-- 集團：有 mega menu 的選項 -->
-          <li class="nav-item has-mega">
-            <a href="#group">集團</a>
-          
-            <div class="mega-menu">
-              <div class="mega-inner">
-                <!-- 左側：台灣福斯介紹 -->
-                <div class="mega-left">
-                  <div class="mega-label">Volkswagen Group Taiwan</div>
-                  <h3 class="mega-title">台灣福斯汽車</h3>
-                  <p class="mega-text">
-                    台灣福斯汽車自 2015 年 1 月 1 日正式營運，不僅象徵德國福斯汽車總部對於台灣市場的高度重視，更充分展現深耕在地市場的堅定決心！
-                  </p>
-                  <p class="mega-text">
-                    台灣福斯汽車旨在為移動服務提供最佳解決方案，並且成為一個被真心喜愛的品牌。
-                  </p>
-          
-                  <a class="mega-more" href="#">
-                    了解更多 →
-                  </a>
-                </div>
-
-                <!-- 右側：三個分區連結 -->
-                <div class="mega-right">
-                  <a class="mega-box" href="#">
-                    <span class="mega-box-title">集團願景</span>
-                    <span class="mega-box-text">了解我們對未來移動、永續經營與在地承諾的長期願景。</span>
-                  </a>
-
-                  <a class="mega-box" href="#">
-                    <span class="mega-box-title">集團策略</span>
-                    <span class="mega-box-text">聚焦電動化、數位化與在地化佈局，將全球優勢轉化為台灣市場機會。</span>
-                  </a>
-
-                  <a class="mega-box" href="#">
-                    <span class="mega-box-title">全球佈局</span>
-                    <span class="mega-box-text">從全球研發與生產網絡，到台灣授權經銷與服務據點的完整布局。</span>
-                  </a>
+        <nav class="nav-links">
+          <ul>
+            <!-- 集團：有 mega menu 的選項 -->
+            <li class="nav-item has-mega">
+              <a href="#group">集團</a>
+        
+              <div class="mega-menu">
+                <div class="mega-inner">
+                  <!-- 左側：台灣福斯介紹 -->
+                  <div class="mega-left">
+                    <div class="mega-label">Volkswagen Group Taiwan</div>
+                    <h3 class="mega-title">台灣福斯汽車</h3>
+                    <p class="mega-text">
+                      台灣福斯汽車自 2015 年 1 月 1 日正式營運，不僅象徵德國福斯汽車總部對於台灣市場的高度重視，更充分展現深耕在地市場的堅定決心！
+                    </p>
+                    <p class="mega-text">
+                      台灣福斯汽車旨在為移動服務提供最佳解決方案，並且成為一個被真心喜愛的品牌。
+                    </p>
+        
+                    <a class="mega-more" href="#group">
+                      了解更多 →
+                    </a>
+                  </div>
+        
+                  <!-- 右側：三個分區連結 -->
+                  <div class="mega-right">
+                    <a class="mega-box" href="#group">
+                      <span class="mega-box-title">集團願景</span>
+                      <span class="mega-box-text">了解我們對未來移動、永續經營與在地承諾的長期願景。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#group">
+                      <span class="mega-box-title">集團策略</span>
+                      <span class="mega-box-text">聚焦電動化、數位化與在地化佈局，將全球優勢轉化為台灣市場機會。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#group">
+                      <span class="mega-box-title">全球佈局</span>
+                      <span class="mega-box-text">從全球研發與生產網絡，到台灣授權經銷與服務據點的完整布局。</span>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-
-
-        <!-- 其他選單：先用一般連結 -->
-          <li class="nav-item"><a href="#brands">品牌</a></li>
-          <li class="nav-item"><a href="#commitments">企業承諾</a></li>
-          <li class="nav-item"><a href="#newsroom">新聞專區</a></li>
-          <li class="nav-item"><a href="#careers">就業機會</a></li>
-          <li class="nav-item"><a href="#contact">聯繫我們</a></li>
-        </ul>
-      </nav>
+            </li>
+        
+            <!-- 品牌：也有自己的 mega menu -->
+            <li class="nav-item has-mega">
+              <a href="#brands">品牌</a>
+        
+              <div class="mega-menu">
+                <div class="mega-inner">
+                  <!-- 左側：品牌說明 -->
+                  <div class="mega-left">
+                    <div class="mega-label">Our Brands</div>
+                    <h3 class="mega-title">多元品牌，滿足不同用車需求。</h3>
+                    <p class="mega-text">
+                      通過福斯汽車、福斯商旅、奧迪汽車及斯柯達汽車，福斯集團望能透過銷售人員的專業培訓、售後服務的全面優化，以及線上線下通路的持續發展，打造最令消費者信賴的品牌。
+                    </p>
+        
+                    <a class="mega-more" href="#brands">
+                      了解更多 →
+                    </a>
+                  </div>
+        
+                  <!-- 右側：簡單分成三種品牌面向（之後可以改成實際連結頁） -->
+                  <div class="mega-right">
+                    <a class="mega-box" href="#brands">
+                      <span class="mega-box-title">乘用車品牌</span>
+                      <span class="mega-box-text">Volkswagen 乘用車與 Škoda，為不同生活風格提供多元選擇。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#brands">
+                      <span class="mega-box-title">豪華與性能</span>
+                      <span class="mega-box-text">Audi 等品牌以設計、科技與性能，詮釋駕馭樂趣與品味。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#brands">
+                      <span class="mega-box-title">商用與未來移動</span>
+                      <span class="mega-box-text">Volkswagen 商旅等車款，支援企業與日常用車的多元需求。</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+        
+            <!-- 企業承諾：也有自己的 mega menu -->
+            <li class="nav-item has-mega">
+              <a href="#commitments">企業承諾</a>
+        
+              <div class="mega-menu">
+                <div class="mega-inner">
+                  <!-- 左側：企業承諾說明 -->
+                  <div class="mega-left">
+                    <div class="mega-label">Our Commitments</div>
+                    <h3 class="mega-title">以永續與誠信為核心的企業轉型。</h3>
+                    <p class="mega-text">
+                      福斯集團以永續發展為核心推動企業轉型，從電動化、智慧科技到碳中和路徑皆積極布局。同時堅守誠信透明、重視安全與品質，以人為本打造多元包容的企業文化，致力提供更可信賴、創新且永續的移動解決方案。
+                    </p>
+        
+                    <a class="mega-more" href="#commitments">
+                      了解更多 →
+                    </a>
+                  </div>
+        
+                  <!-- 右側：三個可點小標 -->
+                  <div class="mega-right">
+                    <a class="mega-box" href="#commitments">
+                      <span class="mega-box-title">創新精神</span>
+                      <span class="mega-box-text">以數位化與智慧科技，持續優化產品與服務體驗。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#commitments">
+                      <span class="mega-box-title">永續發展</span>
+                      <span class="mega-box-text">從節能車款、電動化佈局到減碳行動，實踐 ESG 承諾。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#commitments">
+                      <span class="mega-box-title">Electrify Taiwan</span>
+                      <span class="mega-box-text">推動電動車生態系發展，結合充電佈局與在地合作夥伴。</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+        
+            <!-- 其他選單：目前先維持一般連結 -->
+            <li class="nav-item"><a href="#newsroom">新聞專區</a></li>
+            <li class="nav-item"><a href="#careers">就業機會</a></li>
+            <li class="nav-item"><a href="#contact">聯繫我們</a></li>
+          </ul>
+        </nav>
 
       <div class="nav-menu-toggle">Menu</div>
     </div>
