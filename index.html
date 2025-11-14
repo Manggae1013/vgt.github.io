@@ -125,21 +125,18 @@
 
 /* 滿版 mega menu */
     .mega-menu {
-      position: fixed;
+      position: absolute;   /* ✅ 這樣它還在 li 內部 */
       left: 0;
       right: 0;
-      top: 56px; /* 這個高度 ≒ header 高度，可視覺微調：52 / 60 自己試 */
+      top: 100%;            /* 就會剛好貼在小標下面 */
       background-color: #012734;
-      color: #ffffff;
-      padding: 24px 0;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-
+      padding: 32px 0;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translateY(-6px);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      z-index: 25; /* 比 hero 高，但比 header 略低，避免蓋掉底線 */
+      transition: opacity .2s ease, transform .2s ease;
+      transform: translateY(10px);
+      z-index: 25;
     }
 
 /* 內層：跟 .container 對齊 */
@@ -206,7 +203,11 @@
       pointer-events: auto;
       transform: translateY(0);
     }
-
+    .nav-item.has-mega {
+      position: relative;     /* 讓 absolute 的 mega-menu 對它對齊 */
+      padding-bottom: 16px;   /* 增加緩衝區 */
+    }
+    
     .nav-menu-toggle {
       display: none;
       font-size: 14px;
