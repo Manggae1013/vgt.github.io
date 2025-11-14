@@ -123,99 +123,119 @@
       transform: scaleX(1);
   }
 
-/* ========= 集團 mega menu ========= */
+/* 有 mega menu 的那顆 li，拉大一點 hover 區 */
+.nav-item.has-mega {
+  position: relative;
+  padding-bottom: 16px; /* 避免滑鼠移到下面時 hover 掉掉 */
+}
 
-/* 讓 hover 範圍稍大一點，避免一滑就掉 */
-    .nav-item.has-mega {
-      position: relative;
-      padding-bottom: 16px;
-  }
-
-/* mega menu 本體：滿版、在小標下方 */
+/* ===== 集團 mega menu 方塊 ===== */
     .mega-menu {
       position: absolute;
-      left: 50%;
-      top: 100%;                 /* 貼在 nav 小標下緣 */
-      width: 100vw;              /* 滿版寬度 */
-      transform: translate(-50%, 10px);
+      left: 0;
+      right: 0;
+      top: 100%;                 /* 貼在小標正下方 */
       background-color: #012734;
       color: #ffffff;
       padding: 24px 0;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
+      transform: translateY(10px);
       transition: opacity 0.2s ease, transform 0.2s ease;
       z-index: 25;
-  }
-
-/* 內層內容對齊 container */
+    }
+    
+    /* 內層內容：寬度跟 container 一樣，不會歪一邊 */
     .mega-inner {
       max-width: 1120px;
       margin: 0 auto;
       padding: 0 16px;
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 2fr);
       gap: 32px;
-  }
-
-/* 左側文字描述 */
+    }
+    
+    /* 左側文字區 */
     .mega-left {
       font-size: 13px;
       color: #d6e1ea;
-  }
-
+    }
+    
     .mega-label {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: #8fb5d5;
-      margin-bottom: 8px;
-  }
-
+      margin-bottom: 6px;
+    }
+    
     .mega-title {
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 10px;
-  }
-
+      margin-bottom: 8px;
+    }
+    
     .mega-text {
       font-size: 13px;
       color: #d6e1ea;
       margin-bottom: 6px;
-  }
-
-/* 右側分欄連結 */
+    }
+    
+    /* 了解更多 → */
+    .mega-more {
+      display: inline-flex;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #ffffff;
+      text-decoration: none;
+      align-items: center;
+    }
+    
+    .mega-more:hover {
+      text-decoration: underline;
+    }
+    
+    /* 右側三個 box */
     .mega-right {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-  }
-
-    .mega-column-title {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 8px;
-  }
-
-    .mega-column a {
-      display: block;
-      font-size: 13px;
+      gap: 20px;
+    }
+    
+    .mega-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ffffff; /* 白色底線 */
+      text-decoration: none;
       color: #d6e1ea;
-      margin-bottom: 4px;
-  }
-
-    .mega-column a:hover {
+    }
+    
+    .mega-box-title {
+      font-size: 14px;
+      font-weight: 600;
       color: #ffffff;
-      text-decoration: underline;
-  }
+        }
 
-/* 只要滑在 li.has-mega 或底下 mega-menu 內，都保持展開 */
+    .mega-box-text {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .mega-box:hover {
+      color: #ffffff;
+    }
+
+/* hover 在集團那顆 li 的時候，顯示 mega menu */
     .nav-item.has-mega:hover .mega-menu {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
-      transform: translate(-50%, 0);
+      transform: translateY(0);
     }
 
 /* 手機版先不用 mega menu，之後再做 RWD 菜單 */
@@ -706,43 +726,46 @@
           <!-- 集團：有 mega menu 的選項 -->
           <li class="nav-item has-mega">
             <a href="#group">集團</a>
-
+          
             <div class="mega-menu">
               <div class="mega-inner">
-                <!-- 左側區塊：集團介紹文字 -->
+                <!-- 左側：台灣福斯介紹 -->
                 <div class="mega-left">
                   <div class="mega-label">Volkswagen Group Taiwan</div>
-                  <h3 class="mega-title">串聯全球資源，扎根台灣市場。</h3>
+                  <h3 class="mega-title">台灣福斯汽車</h3>
                   <p class="mega-text">
-                  Volkswagen Group Taiwan 結合集團在研發、製造與品牌經營上的優勢，
-                  以乘用車、商用車與電動車陣容，為台灣帶來更安全、更有效率的移動解決方案。
+                    台灣福斯汽車自 2015 年 1 月 1 日正式營運，不僅象徵德國福斯汽車總部對於台灣市場的高度重視，更充分展現深耕在地市場的堅定決心！
                   </p>
                   <p class="mega-text">
-                  我們與授權經銷商、服務據點與在地合作夥伴攜手，將德國工藝與台灣日常生活緊密連結。
+                    台灣福斯汽車旨在為移動服務提供最佳解決方案，並且成為一個被真心喜愛的品牌。
                   </p>
+          
+                  <a class="mega-more" href="#">
+                    了解更多 →
+                  </a>
                 </div>
 
-              <!-- 右側區塊：分群連結 -->
+                <!-- 右側：三個分區連結 -->
                 <div class="mega-right">
-                  <div class="mega-column">
-                    <div class="mega-column-title">集團願景</div>
-                    <a href="#">永續移動願景</a>
-                    <a href="#">對台灣市場的長期承諾</a>
-                  </div>
-                  <div class="mega-column">
-                    <div class="mega-column-title">集團策略</div>
-                    <a href="#">電動化與數位化策略</a>
-                    <a href="#">產品與品牌佈局</a>
-                  </div>
-                  <div class="mega-column">
-                    <div class="mega-column-title">全球與在地布局</div>
-                    <a href="#">全球生產與研發網絡</a>
-                    <a href="#">在台經銷與服務網絡</a>
-                  </div>
+                  <a class="mega-box" href="#">
+                    <span class="mega-box-title">集團願景</span>
+                    <span class="mega-box-text">了解我們對未來移動、永續經營與在地承諾的長期願景。</span>
+                  </a>
+
+                  <a class="mega-box" href="#">
+                    <span class="mega-box-title">集團策略</span>
+                    <span class="mega-box-text">聚焦電動化、數位化與在地化佈局，將全球優勢轉化為台灣市場機會。</span>
+                  </a>
+
+                  <a class="mega-box" href="#">
+                    <span class="mega-box-title">全球佈局</span>
+                    <span class="mega-box-text">從全球研發與生產網絡，到台灣授權經銷與服務據點的完整布局。</span>
+                  </a>
                 </div>
               </div>
             </div>
           </li>
+
 
         <!-- 其他選單：先用一般連結 -->
           <li class="nav-item"><a href="#brands">品牌</a></li>
