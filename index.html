@@ -124,17 +124,16 @@
   }
 
 /* 有 mega menu 的那顆 li，拉大一點 hover 區 */
-.nav-item.has-mega {
-  position: relative;
-  padding-bottom: 16px; /* 避免滑鼠移到下面時 hover 掉掉 */
-}
-
+    .nav-item.has-mega {
+      /* 這個 li 不要 position: relative，避免方塊以它為基準歪掉 */
+      padding-bottom: 16px;  /* 保留這個，避免滑鼠移到下面時 hover 掉 */
+    }
 /* ===== 集團 mega menu 方塊 ===== */
     .mega-menu {
       position: absolute;
       left: 0;
       right: 0;
-      top: 100%;                 /* 貼在小標正下方 */
+      top: 100%;               /* 就貼在 header/nav 底下 */
       background-color: #012734;
       color: #ffffff;
       padding: 24px 0;
@@ -143,10 +142,11 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translateY(10px);
+      transform: translateY(10px);  /* 只往下位移，不再左右飄 */
       transition: opacity 0.2s ease, transform 0.2s ease;
       z-index: 25;
     }
+
     
     /* 內層內容：寬度跟 container 一樣，不會歪一邊 */
     .mega-inner {
