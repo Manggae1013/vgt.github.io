@@ -106,7 +106,66 @@
     .nav-item {
       position: relative; 
     }
-    
+
+  /* 整個 header 要能當 mega menu 的定位參考 */
+    header {
+      background-color: #012734;
+      color: #ffffff;
+      /* 如果你前面有拿掉 position: sticky 可以先不用動 */
+      position: relative;
+    }
+
+/* mega menu 預設不顯示 */
+    .mega-menu {
+      position: absolute;
+      left: 0;
+      top: 100%;                 /* 緊貼在 nav 項目底下 */
+      width: 100vw;              /* 滿版寬 */
+      transform: translateX(-50%);
+      left: 50%;                 /* 讓它對齊整個畫面，而不是只在某個 li 底下 */
+      background-color: #012734; /* 深藍底 */
+      color: #ffffff;
+      padding: 24px 0;
+      display: none;             /* 預設隱藏 */
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+/* 內層內容寬度跟 .container 一樣 */
+    .mega-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+/* 每一欄 */
+    .mega-column a {
+      display: block;
+      font-size: 13px;
+      color: #d6e1ea;
+      margin-bottom: 6px;
+    }
+  
+    .mega-column a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .mega-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #8fb5d5;
+      margin-bottom: 8px;
+    }
+
+/* 滑到 nav-item.has-mega 時顯示 banner */
+    .nav-item.has-mega:hover .mega-menu {
+      display: block;
+   }
+
     .nav-menu-toggle {
       display: none;
       font-size: 14px;
