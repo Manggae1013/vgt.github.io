@@ -36,182 +36,201 @@
       padding: 0 16px;
     }
 
-    /* ===== 導覽列 ===== */
+/* ===== 導覽列 ===== */
     header {
       background-color: #012734;
       color: #ffffff;
       position: sticky;
       top: 0;
-      z-index: 20;
-    }
+      z-index: 30;
+  }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 0;
-      gap: 24px;
-    }
+      padding: 8px 0;
+      gap: 16px;
+  }
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
+/* 左上角 LOGO 文字 */
     .nav-left a {
-      color: #ffffff;       /* 保持白色不變 */
+      color: #ffffff;
       text-decoration: none;
-      cursor: pointer;      /* 變手型 */
-    }
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+  }
+
+    .nav-left a:hover {
+      opacity: 0.8;
+  }
+
+/* 右側選單區 */
     .nav-links {
       display: flex;
-      gap: 18px;
       align-items: center;
       font-size: 13px;
-    }
+  }
 
+/* ul / li 排列 */
+    .nav-links ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+  }
+
+    .nav-item {
+      position: relative;
+  }
+
+/* 每一個小標文字 */
     .nav-links a {
       position: relative;
       padding: 6px 0;
-      margin: 0 10px;
+      margin: 0 4px;
       color: #c2d0dc;
+      text-decoration: none;
       border-radius: 0;
-    }
+      transition: color 0.2s ease;
+  }
 
-/* 文字變白 */
+/* hover 文字變白 */
     .nav-links a:hover {
       color: #ffffff;
-    }
+  }
 
 /* 白色底線動畫 */
     .nav-links a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: -4px; /* 底線在 header 裡面，不要太靠下 */
+      bottom: -4px; /* 底線位置，可微調 */
       width: 100%;
       height: 2px;
       background-color: #ffffff;
       transform: scaleX(0);
       transform-origin: left center;
       transition: transform 0.25s ease-out;
-    }
+  }
 
+/* 滑到選單才展開底線 */
     .nav-links a:hover::after {
       transform: scaleX(1);
-    }
-    
-    .nav-links ul {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 18px;         
-    }
-    .nav-item {
-      position: relative; 
-    }
+  }
 
-    /* 讓 header 可以當 z-index 參考 */
-    header {
+/* ========= 集團 mega menu ========= */
+
+/* 讓 hover 範圍稍大一點，避免一滑就掉 */
+    .nav-item.has-mega {
+      position: relative;
+      padding-bottom: 16px;
+  }
+
+/* mega menu 本體：滿版、在小標下方 */
+    .mega-menu {
+      position: absolute;
+      left: 50%;
+      top: 100%;                 /* 貼在 nav 小標下緣 */
+      width: 100vw;              /* 滿版寬度 */
+      transform: translate(-50%, 10px);
       background-color: #012734;
       color: #ffffff;
-      position: sticky;
-      top: 0;
-      z-index: 30; /* 確保在 hero 之上 */
-    }
-
-/* 滿版 mega menu */
-    .mega-menu {
-      position: absolute;   /* ✅ 這樣它還在 li 內部 */
-      left: 0;
-      right: 0;
-      top: 100%;            /* 就會剛好貼在小標下面 */
-      background-color: #012734;
-      padding: 32px 0;
+      padding: 24px 0;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transition: opacity .2s ease, transform .2s ease;
-      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
       z-index: 25;
-    }
+  }
 
-/* 內層：跟 .container 對齊 */
+/* 內層內容對齊 container */
     .mega-inner {
       max-width: 1120px;
       margin: 0 auto;
       padding: 0 16px;
-
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
       gap: 32px;
-    }
+  }
 
-/* 左側文字區 */
+/* 左側文字描述 */
+    .mega-left {
+      font-size: 13px;
+      color: #d6e1ea;
+  }
+
     .mega-label {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: #8fb5d5;
       margin-bottom: 8px;
-    }
+  }
 
     .mega-title {
       font-size: 18px;
       font-weight: 600;
       margin-bottom: 10px;
-    }
+  }
 
     .mega-text {
       font-size: 13px;
       color: #d6e1ea;
       margin-bottom: 6px;
-    }
+  }
 
-/* 右側分欄區 */
+/* 右側分欄連結 */
     .mega-right {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 24px;
-    }
+  }
 
     .mega-column-title {
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 8px;
-    }
+  }
 
     .mega-column a {
       display: block;
       font-size: 13px;
       color: #d6e1ea;
       margin-bottom: 4px;
-    }
+  }
 
     .mega-column a:hover {
       color: #ffffff;
       text-decoration: underline;
-    }
+  }
 
-/* 滑到「集團」這個 li 或其底下區塊時顯示 mega menu */
+/* 只要滑在 li.has-mega 或底下 mega-menu 內，都保持展開 */
     .nav-item.has-mega:hover .mega-menu {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
-      transform: translateY(0);
+      transform: translate(-50%, 0);
     }
-    .nav-item.has-mega {
-      position: relative;     /* 讓 absolute 的 mega-menu 對它對齊 */
-      padding-bottom: 16px;   /* 增加緩衝區 */
+
+/* 手機版先不用 mega menu，之後再做 RWD 菜單 */
+  @media (max-width: 720px) {
+    .nav-links {
+      display: none; /* 先整排藏起來，之後可以做 hamburger menu */
     }
-    
+
     .nav-menu-toggle {
-      display: none;
-      font-size: 14px;
+      display: block;
+      font-size: 13px;
+      color: #c2d0dc;
     }
+  }
+
 
     /* ===== 主視覺區（Hero） ===== */
     .hero {
