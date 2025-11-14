@@ -1,0 +1,836 @@
+可以～那我幫你做一個**「結構、版型都接近 volkswagengroup.com.au，但內容改成台灣用」的 `index.html` 範本**，丟進 GitHub Pages 就能跑。
+
+下面這份是**單一檔案版**（HTML + CSS 寫在一起），你可以直接整份複製 → 存成 `index.html` → push 到 GitHub repo。
+
+---
+
+## `index.html`（Volkswagen Group Taiwan Demo）
+
+```html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Volkswagen Group Taiwan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Volkswagen Group Taiwan – 將德國工藝與在地洞察結合，打造專屬台灣的移動解決方案。">
+  <style>
+    /* ===== 重置與基礎設定 ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      line-height: 1.6;
+      color: #0b1116;
+      background-color: #f5f5f5;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ===== 導覽列 ===== */
+    header {
+      background-color: #020c14;
+      color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 24px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #c2d0dc;
+    }
+
+    .nav-links a:hover {
+      background-color: #12202c;
+      color: #ffffff;
+    }
+
+    .nav-menu-toggle {
+      display: none;
+      font-size: 14px;
+    }
+
+    /* ===== 主視覺區（Hero） ===== */
+    .hero {
+      background: radial-gradient(circle at top left, #1c3c57 0, #020c14 55%);
+      color: #ffffff;
+      padding: 52px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #8fb5d5;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-text {
+      font-size: 15px;
+      color: #d6e1ea;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: #9fb4c5;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: #1f6fb5;
+      border-color: #1f6fb5;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #155186;
+      border-color: #155186;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border-color: #7fa6c9;
+      color: #e1edf7;
+    }
+
+    .btn-outline:hover {
+      background-color: #ffffff;
+      color: #020c14;
+      transform: translateY(-1px);
+    }
+
+    .hero-badge {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #9fb4c5;
+    }
+
+    .hero-image {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      background: #071018;
+    }
+
+    .hero-image-placeholder {
+      height: 260px;
+      background: linear-gradient(135deg, #2a4f6c, #1e2d3a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d6e1ea;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ===== 通用區塊樣式 ===== */
+    section {
+      padding: 40px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7a8692;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .section-text {
+      font-size: 14px;
+      color: #555f68;
+      max-width: 620px;
+    }
+
+    .section-link {
+      font-size: 13px;
+      color: #205f9d;
+      white-space: nowrap;
+    }
+
+    .section-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Our Commitments 區 ===== */
+    .commitments {
+      background-color: #ffffff;
+    }
+
+    .commitments-content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .commitments-text p {
+      font-size: 14px;
+      color: #444c55;
+      margin-bottom: 12px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      background-color: #eef3f8;
+      color: #394551;
+    }
+
+    .commitments-visual {
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, #1c5f7a, #04141d);
+      padding: 22px 20px;
+      color: #e4f0f7;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+      font-size: 13px;
+    }
+
+    .commitments-visual-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .commitments-visual-list {
+      list-style: none;
+    }
+
+    .commitments-visual-list li {
+      margin-bottom: 6px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #76d0ff;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* ===== Latest Articles 區 ===== */
+    .articles {
+      background-color: #f4f6f9;
+      border-top: 1px solid #dde3ea;
+      border-bottom: 1px solid #dde3ea;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .article-card {
+      background-color: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 18px rgba(10, 26, 44, 0.05);
+    }
+
+    .article-media {
+      height: 160px;
+      background: linear-gradient(135deg, #2b4f7c, #7aa3c8);
+    }
+
+    .article-body {
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      color: #7a8692;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .article-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .article-excerpt {
+      font-size: 13px;
+      color: #4c5660;
+      flex: 1;
+    }
+
+    .article-link {
+      font-size: 13px;
+      color: #205f9d;
+      margin-top: 6px;
+    }
+
+    .article-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Join Us 區 ===== */
+    .join {
+      background-color: #ffffff;
+    }
+
+    .join-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .join-text p {
+      font-size: 14px;
+      color: #444c55;
+      margin-bottom: 10px;
+    }
+
+    .join-note {
+      font-size: 12px;
+      color: #7a8692;
+      margin-top: 6px;
+    }
+
+    .join-visual {
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #28374a, #0f1821);
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d6e1ea;
+      font-size: 13px;
+    }
+
+    /* ===== Discover more 區 ===== */
+    .discover {
+      background-color: #f8fafc;
+    }
+
+    .discover-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .discover-card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 16px 16px 14px;
+      box-shadow: 0 6px 18px rgba(10, 26, 44, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .discover-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #7a8692;
+    }
+
+    .discover-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .discover-text {
+      font-size: 13px;
+      color: #4c5660;
+      flex: 1;
+    }
+
+    .discover-link {
+      font-size: 13px;
+      color: #205f9d;
+      margin-top: 6px;
+    }
+
+    .discover-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #020c14;
+      color: #c2d0dc;
+      font-size: 12px;
+      padding: 18px 0;
+      margin-top: 24px;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #8d9cab;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      color: #7d8c9b;
+    }
+
+    /* ===== RWD ===== */
+    @media (max-width: 880px) {
+      .hero-grid,
+      .commitments-content,
+      .articles-grid,
+      .join-grid,
+      .discover-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .articles-grid {
+        gap: 16px;
+      }
+
+      .discover-grid {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-menu-toggle {
+        display: block;
+        font-size: 13px;
+        color: #c2d0dc;
+      }
+
+      .hero {
+        padding: 32px 0 28px;
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .hero-image-placeholder {
+        height: 210px;
+      }
+
+      section {
+        padding: 28px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 導覽列 -->
+  <header>
+    <div class="container nav">
+      <div class="nav-left">
+        <div class="nav-logo">VW</div>
+        <span>VOLKSWAGEN GROUP TAIWAN</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#group">The Group</a>
+        <a href="#brands">Our Brands</a>
+        <a href="#commitments">Our Commitments</a>
+        <a href="#newsroom">Newsroom</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+      <div class="nav-menu-toggle">Menu</div>
+    </div>
+  </header>
+
+  <!-- Hero 區 -->
+  <main>
+    <section class="hero" id="group">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-kicker">Volkswagen Group Taiwan</div>
+          <h1 class="hero-title">在台灣，將德國工藝與在地洞察結合的移動夥伴。</h1>
+          <p class="hero-text">
+            Volkswagen Group Taiwan 立基於全球集團的技術與規模優勢，結合對台灣道路環境與用車習慣的理解，提供兼具安全、品質與駕馭樂趣的移動解決方案。從乘用車、商用車到純電車款，我們致力於為台灣打造更聰明、更永續的出行體驗。
+          </p>
+          <p class="hero-subtitle">
+            我們與授權經銷夥伴、服務據點與各界合作夥伴攜手前進，讓每一次出發，都更安心、更值得期待。
+          </p>
+          <div class="hero-actions">
+            <a href="#brands" class="btn btn-primary">Discover the Group</a>
+            <a href="#commitments" class="btn btn-outline">Our Commitments</a>
+          </div>
+          <div class="hero-badge">
+            為台灣創造連結、驅動影響，並以創新共築永續的移動未來。
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-placeholder">
+            HERO IMAGE / KEY VISUAL
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Commitments 區 -->
+    <section class="commitments" id="commitments">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Our Commitments</div>
+            <h2 class="section-title">以長期承諾，驅動台灣的永續移動。</h2>
+            <p class="section-text">
+              在 Volkswagen Group Taiwan，我們不只專注於產品本身，更致力於在環境、社會與公司治理各面向上，扮演值得信賴的企業公民。從電動化佈局、減碳行動，到誠信經營與多元共融，我們以實際作為回應利害關係人的期待。
+            </p>
+          </div>
+          <a href="#" class="section-link">Learn more</a>
+        </div>
+
+        <div class="commitments-content">
+          <div class="commitments-text">
+            <p>
+              我們正透過引進更多電動與節能車型、優化供應鏈管理與導入數位工具，減少營運與產品對環境的影響。同時，我們持續提升經銷與服務據點的品質，確保每一位車主都能享有透明、專業且安心的服務體驗。
+            </p>
+            <p>
+              在公司內部，我們以誠信與合規為基礎，強化員工培訓與職涯發展，打造安全且尊重多元聲音的職場文化。
+            </p>
+            <div class="pill-list">
+              <span class="pill">永續與減碳行動</span>
+              <span class="pill">電動車與充電佈局</span>
+              <span class="pill">誠信與合規</span>
+              <span class="pill">員工發展與多元職場</span>
+            </div>
+          </div>
+          <aside class="commitments-visual">
+            <div class="commitments-visual-title">Forward. For Taiwan.</div>
+            <ul class="commitments-visual-list">
+              <li>
+                <span class="dot"></span>
+                <span>持續導入更多符合台灣市場需求的節能與純電車款，為未來移動建立選擇。</span>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <span>結合在地合作夥伴與服務據點，優化整體用車生命周期體驗。</span>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <span>透過培訓與制度，將誠信經營與合規內化為日常文化的一部分。</span>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <span>以人為本，推動安全、尊重與成長兼具的工作環境。</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Articles 區 -->
+    <section class="articles" id="newsroom">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Newsroom</div>
+            <h2 class="section-title">Latest Articles</h2>
+            <p class="section-text">
+              掌握 Volkswagen Group Taiwan 的最新新聞、品牌動態與活動消息，了解我們如何與台灣一起向前。
+            </p>
+          </div>
+          <a href="#" class="section-link">View all</a>
+        </div>
+
+        <div class="articles-grid">
+          <!-- 文章 1 -->
+          <article class="article-card">
+            <div class="article-media"></div>
+            <div class="article-body">
+              <div class="article-meta">
+                <span>2025 / 08 / 06</span>
+                <span>Media Releases</span>
+                <span>VW Passenger Vehicles</span>
+              </div>
+              <h3 class="article-title">全新純電車款於台灣正式亮相，開啟新世代移動篇章</h3>
+              <p class="article-excerpt">
+                Volkswagen Group Taiwan 宣布全新純電車款於台灣正式上市，以創新科技與直覺操作體驗，回應日益成長的電動車市場需求。
+              </p>
+              <a href="#" class="article-link">Read more</a>
+            </div>
+          </article>
+
+          <!-- 文章 2 -->
+          <article class="article-card">
+            <div class="article-media"></div>
+            <div class="article-body">
+              <div class="article-meta">
+                <span>2025 / 05 / 14</span>
+                <span>Corporate</span>
+                <span>Volkswagen Group Taiwan</span>
+              </div>
+              <h3 class="article-title">Volkswagen Group Taiwan 宣布關鍵管理團隊調整</h3>
+              <p class="article-excerpt">
+                為持續強化在台營運韌性與市場佈局，Volkswagen Group Taiwan 宣布管理團隊調整，以更敏捷的跨品牌協作回應快速變化的產業環境。
+              </p>
+              <a href="#" class="article-link">Read more</a>
+            </div>
+          </article>
+
+          <!-- 文章 3 -->
+          <article class="article-card">
+            <div class="article-media"></div>
+            <div class="article-body">
+              <div class="article-meta">
+                <span>2025 / 03 / 04</span>
+                <span>Events</span>
+                <span>All Brands</span>
+              </div>
+              <h3 class="article-title">Volkswagen Group Taiwan 參與大型車展，完整呈現電動與燃油產品陣容</h3>
+              <p class="article-excerpt">
+                於台灣指標車展中，我們攜手多個品牌共同展出最新車型，從純電休旅到經典性能車款，展現集團完整產品矩陣與未來方向。
+              </p>
+              <a href="#" class="article-link">Read more</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join Us 區 -->
+    <section class="join" id="careers">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Careers</div>
+            <h2 class="section-title">Join us</h2>
+            <p class="section-text">
+              在 Volkswagen Group Taiwan，我們相信「移動的不只是車，更是每一個人的可能性」。我們邀請具有企圖心、好奇心與責任感的你，一起在國際化環境中成長。
+            </p>
+          </div>
+          <a href="#" class="section-link">View job offers</a>
+        </div>
+
+        <div class="join-grid">
+          <div class="join-text">
+            <p>
+              無論是產品企劃、銷售與行銷、售後服務、財務或數據與數位化相關領域，你都將與跨品牌、跨職能團隊協作，參與塑造台灣移動未來的過程。
+            </p>
+            <p>
+              我們提供持續學習資源、員工發展計畫與在地與海外橫向合作機會，讓每個人都能在專業領域中累積實力，同時發展多元職涯路徑。
+            </p>
+            <p class="join-note">
+              目前職缺資訊將透過官方招募平台與 LinkedIn 公布，歡迎持續關注最新職涯機會。
+            </p>
+          </div>
+          <div class="join-visual">
+            未來的移動，需要多元的你一起完成。<br>Explore your journey with Volkswagen Group Taiwan.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discover more 區 -->
+    <section class="discover" id="brands">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Discover more</div>
+            <h2 class="section-title">探索我們在台灣的佈局。</h2>
+            <p class="section-text">
+              從全球品牌矩陣到台灣市場策略，我們結合在地需求與國際資源，為不同客群提供最合適的移動方案。
+            </p>
+          </div>
+        </div>
+
+        <div class="discover-grid">
+          <article class="discover-card">
+            <div class="discover-label">Our Vision</div>
+            <h3 class="discover-title">為台灣打造更值得嚮往的移動選擇</h3>
+            <p class="discover-text">
+              我們的願景，是成為台灣最值得信賴且最具吸引力的移動解決方案提供者，讓每一次移動都兼具安心、效率與情感連結。
+            </p>
+            <a href="#" class="discover-link">Learn more</a>
+          </article>
+
+          <article class="discover-card">
+            <div class="discover-label">Our Strategy</div>
+            <h3 class="discover-title">在電動化、數位化與在地化之間找到平衡</h3>
+            <p class="discover-text">
+              透過電動車產品導入、數據與數位服務優化，以及與在地合作夥伴的緊密合作，我們持續調整步伐，回應台灣市場的真實需求。
+            </p>
+            <a href="#" class="discover-link">Our Strategy</a>
+          </article>
+
+          <article class="discover-card" id="contact">
+            <div class="discover-label">Our Presence</div>
+            <h3 class="discover-title">在地根基，串聯全台服務網絡</h3>
+            <p class="discover-text">
+              透過全台授權經銷商與服務據點，我們將品牌價值落實在每一次接觸之中，無論是賞車試駕、交車體驗或售後服務。
+            </p>
+            <a href="#" class="discover-link">Our presence in Taiwan</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>© 2025 Volkswagen Group Taiwan. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Integrity & Compliance</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Volkswagen Group Taiwan</span>
+        <span>For internal demo use – GitHub Pages prototype.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
