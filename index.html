@@ -65,26 +65,29 @@
     .nav-links {
       display: flex;
       gap: 18px;
+      align-items: center;
       font-size: 13px;
     }
 
     .nav-links a {
-      position: relative;        
-      padding: 6px 0;        
-      margin: 0 10px; 
+      position: relative;
+      padding: 6px 0;
+      margin: 0 10px;
       color: #c2d0dc;
-      border-radius: 0;        
+      border-radius: 0;
     }
 
+/* 文字變白 */
     .nav-links a:hover {
       color: #ffffff;
     }
 
+/* 白色底線動畫 */
     .nav-links a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: -2px;   
+      bottom: -4px; /* 底線在 header 裡面，不要太靠下 */
       width: 100%;
       height: 2px;
       background-color: #ffffff;
@@ -107,52 +110,46 @@
       position: relative; 
     }
 
-  /* 整個 header 要能當 mega menu 的定位參考 */
+    /* 讓 header 可以當 z-index 參考 */
     header {
       background-color: #012734;
       color: #ffffff;
-      /* 如果你前面有拿掉 position: sticky 可以先不用動 */
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 30; /* 確保在 hero 之上 */
     }
 
-/* mega menu 預設不顯示 */
+/* 滿版 mega menu */
     .mega-menu {
-      position: absolute;
+      position: fixed;
       left: 0;
-      top: 100%;                 /* 緊貼在 nav 項目底下 */
-      width: 100vw;              /* 滿版寬 */
-      transform: translateX(-50%);
-      left: 50%;                 /* 讓它對齊整個畫面，而不是只在某個 li 底下 */
-      background-color: #012734; /* 深藍底 */
+      right: 0;
+      top: 56px; /* 這個高度 ≒ header 高度，可視覺微調：52 / 60 自己試 */
+      background-color: #012734;
       color: #ffffff;
       padding: 24px 0;
-      display: none;             /* 預設隱藏 */
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(-6px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 25; /* 比 hero 高，但比 header 略低，避免蓋掉底線 */
     }
 
-/* 內層內容寬度跟 .container 一樣 */
+/* 內層：跟 .container 對齊 */
     .mega-inner {
       max-width: 1120px;
       margin: 0 auto;
       padding: 0 16px;
+
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr);
+      gap: 32px;
     }
 
-/* 每一欄 */
-    .mega-column a {
-      display: block;
-      font-size: 13px;
-      color: #d6e1ea;
-      margin-bottom: 6px;
-    }
-  
-    .mega-column a:hover {
-      color: #ffffff;
-      text-decoration: underline;
-    }
-
+/* 左側文字區 */
     .mega-label {
       font-size: 12px;
       text-transform: uppercase;
@@ -161,10 +158,50 @@
       margin-bottom: 8px;
     }
 
-/* 滑到 nav-item.has-mega 時顯示 banner */
-    .nav-item.has-mega:hover .mega-menu {
+    .mega-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .mega-text {
+      font-size: 13px;
+      color: #d6e1ea;
+      margin-bottom: 6px;
+    }
+
+/* 右側分欄區 */
+    .mega-right {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .mega-column-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .mega-column a {
       display: block;
-   }
+      font-size: 13px;
+      color: #d6e1ea;
+      margin-bottom: 4px;
+    }
+
+    .mega-column a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+/* 滑到「集團」這個 li 或其底下區塊時顯示 mega menu */
+    .nav-item.has-mega:hover .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
 
     .nav-menu-toggle {
       display: none;
@@ -637,41 +674,64 @@
       <div class="nav-left">
         <span>VOLKSWAGEN GROUP TAIWAN</span>
       </div>
-     <nav class="nav-links">
-      <ul>
-        <li class="nav-item has-mega">
-          <a href="#group">集團</a>
-      <!-- hover 時要出現的 banner -->
-          <div class="mega-menu">
-            <div class="mega-inner">
-             <div class="mega-column">
-               <div class="mega-label">集團介紹</div>
-               <a href="https://volkswagengroup.com.tw/our-vision">集團願景</a>
-               <a href="https://volkswagengroup.com.tw/our-strategy">集團策略</a>
-               <a href="https://volkswagengroup.com.tw/our-presence">全球布局</a>
-             </div>
-             <div class="mega-column">
-              <div class="mega-label">營運與佈局</div>
-                <a href="#">品牌與產品組合</a>
-                <a href="#">授權經銷與服務網絡</a>
-             </div> 
-              <div class="mega-column">
-                <div class="mega-label">更多</div>
-                <a href="#">集團新聞</a>
-                <a href="#">企業承諾</a>
+
+      <nav class="nav-links">
+        <ul>
+        <!-- 有 mega menu 的項目 -->
+          <li class="nav-item has-mega">
+            <a href="#group">集團</a>
+
+          <!-- 滑到「集團」時要展開的滿版區塊 -->
+            <div class="mega-menu">
+              <div class="mega-inner">
+              <!-- 左側：集團介紹文字 -->
+                <div class="mega-left">
+                  <div class="mega-label">Volkswagen Group Taiwan</div>
+                  <h3 class="mega-title">串聯全球資源，扎根台灣市場。</h3>
+                  <p class="mega-text">
+                  Volkswagen Group Taiwan 結合集團在研發、製造與品牌經營上的優勢，
+                  以乘用車、商用車與電動車陣容，為台灣帶來更安全、更有效率的移動解決方案。
+                  </p>
+                  <p class="mega-text">
+                  我們與授權經銷商、服務據點與在地合作夥伴攜手，將德國工藝與台灣日常生活緊密連結。
+                  </p>
+                </div>
+
+                <!-- 右側：細分連結 -->
+                <div class="mega-right">
+                  <div class="mega-column">
+                    <div class="mega-column-title">集團願景</div>
+                    <a href="#">永續移動願景</a>
+                    <a href="#">對台灣市場的長期承諾</a>
+                  </div>
+                  <div class="mega-column">
+                    <div class="mega-column-title">集團策略</div>
+                    <a href="#">電動化與數位化策略</a>
+                    <a href="#">產品與品牌佈局</a>
+                  </div>
+                  <div class="mega-column">
+                    <div class="mega-column-title">全球與在地布局</div>
+                    <a href="#">全球生產與研發網絡</a>
+                    <a href="#">在台經銷與服務網絡</a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li class="nav-item"><a href="#brands">品牌</a></li>
-        <li class="nav-item"><a href="#commitments">企業承諾</a></li>
-        <li class="nav-item"><a href="#newsroom">新聞專區</a></li>
-        <li class="nav-item"><a href="#careers">就業機會</a></li>
-        <li class="nav-item"><a href="#contact">聯繫我們</a></li>
-       </ul>
-
+        <!-- 其他項目（暫時沒有 mega menu） -->
+          <li class="nav-item"><a href="#brands">品牌</a></li>
+          <li class="nav-item"><a href="#commitments">企業承諾</a></li>
+          <li class="nav-item"><a href="#newsroom">新聞專區</a></li>
+          <li class="nav-item"><a href="#careers">就業機會</a></li>
+          <li class="nav-item"><a href="#contact">聯繫我們</a></li>
+        </ul>
       </nav>
+
+      <div class="nav-menu-toggle">Menu</div>
+    </div>
+  </header>
+
       <div class="nav-menu-toggle">Menu</div>
     </div>
   </header>
