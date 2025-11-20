@@ -907,28 +907,47 @@
 
   <!-- Hero 區 -->
   <main>
-    <section class="hero" id="group">
-      <div class="container hero-grid">
-        <div>
-          <div class="hero-kicker">Volkswagen Group Taiwan</div>
-          <h1 class="hero-title">在台灣，將德國工藝與在地洞察結合的移動夥伴。</h1>
-          <p class="hero-text">
-            Volkswagen Group Taiwan 立基於全球集團的技術與規模優勢，結合對台灣道路環境與用車習慣的理解，提供兼具安全、品質與駕馭樂趣的移動解決方案。從乘用車、商用車到純電車款，我們致力於為台灣打造更聰明、更永續的出行體驗。
-          </p>
-          <p class="hero-subtitle">
-            我們與授權經銷夥伴、服務據點與各界合作夥伴攜手前進，讓每一次出發，都更安心、更值得期待。
-          </p>
-          <div class="hero-actions">
-            <a href="#brands" class="btn btn-primary">Discover the Group</a>
-            <a href="#commitments" class="btn btn-outline">Our Commitments</a>
+    <section class="hero">
+      <div class="hero-inner container">
+        <div class="hero-slider">
+          <!-- 幻燈片 1 -->
+          <div class="hero-slide active" style="background-image: url('images/hero1.jpg');"></div>
+          <!-- 幻燈片 2 -->
+          <div class="hero-slide" style="background-image: url('images/hero2.jpg');"></div>
+          <!-- 幻燈片 3 -->
+          <div class="hero-slide" style="background-image: url('images/hero3.jpg');"></div>
+    
+          <!-- 左右切換按鈕 -->
+          <button class="hero-nav hero-nav-prev" aria-label="上一張">&#10094;</button>
+          <button class="hero-nav hero-nav-next" aria-label="下一張">&#10095;</button>
+    
+          <!-- 小圓點 -->
+          <div class="hero-dots">
+            <button class="hero-dot active" data-index="0" aria-label="第 1 張"></button>
+            <button class="hero-dot" data-index="1" aria-label="第 2 張"></button>
+            <button class="hero-dot" data-index="2" aria-label="第 3 張"></button>
           </div>
-          <div class="hero-badge">
-            為台灣創造連結、驅動影響，並以創新共築永續的移動未來。
-          </div>
-        </div>
-        <div class="hero-image">
-          <div class="hero-image-placeholder">
-            HERO IMAGE / KEY VISUAL
+    
+          <!-- 文字區塊 -->
+          <div class="hero-overlay">
+            <p class="hero-eyebrow">Volkswagen Group Taiwan</p>
+            <h1 class="hero-title">在台灣，將德國工藝與在地洞察結合的移動夥伴。</h1>
+            <p class="hero-text">
+              Volkswagen Group Taiwan 立基於全球集團的技術與規模優勢，結合對台灣道路環境與用車習慣的理解，
+              提供兼具安全、品質與駕馭樂趣的移動解決方案。
+            </p>
+            <p class="hero-text">
+              從乘用車、商用車到純電車款，我們致力於為台灣打造更聰明、更永續的出行體驗。
+            </p>
+    
+            <div class="hero-actions">
+              <a href="#group" class="btn btn-primary">Discover the Group</a>
+              <a href="#commitments" class="btn btn-outline">Our Commitments</a>
+            </div>
+    
+            <p class="hero-subtext">
+              為台灣創造連結、驅動影響，並以創新共築永續的移動未來。
+            </p>
           </div>
         </div>
       </div>
