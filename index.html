@@ -237,7 +237,217 @@
       pointer-events: auto;
       transform: translateY(0);
     }
+    /* === Hero 幻燈片區 === */
+    
+    .hero {
+      background-color: #001b3f; /* 外層深藍背景 */
+      color: #ffffff;
+      padding: 4rem 0;
+    }
+    
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    
+    .hero-slider {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      min-height: 360px;
+    }
+    
+    /* 背景圖片每一張 */
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 0.8s ease, transform 1.2s ease;
+    }
+    
+    /* 顯示中的那一張 */
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* 左邊的深色漸層，讓文字更清楚 */
+    .hero-slider::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 8, 30, 0.9) 0%,
+        rgba(0, 8, 30, 0.7) 35%,
+        rgba(0, 8, 30, 0.2) 70%,
+        rgba(0, 8, 30, 0) 100%
+      );
+      z-index: 1;
+    }
+    
+    /* 文字內容區 */
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      padding: 3rem;
+      max-width: 640px;
+    }
+    
+    .hero-eyebrow {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 0.75rem;
+    }
+    
+    .hero-title {
+      font-size: 2.1rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+      opacity: 0.95;
+    }
+    
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 0.75rem;
+    }
+    
+    .hero-subtext {
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+    
+    /* 按鈕樣式可以依照你原本的 btn 類別調整 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+    
+    .btn-primary {
+      background-color: #00a0ff;
+      color: #001326;
+      border-color: #00a0ff;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background-color: #34b6ff;
+      border-color: #34b6ff;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+    
+    /* 左右切換箭頭 */
+    .hero-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+    }
+    
+    .hero-nav-prev {
+      left: 1rem;
+    }
+    
+    .hero-nav-next {
+      right: 1rem;
+    }
+    
+    .hero-nav:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
+    
+    /* 小圓點 */
+    .hero-dots {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      z-index: 3;
+      display: flex;
+      gap: 0.4rem;
+    }
+    
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .hero-dot.active {
+      width: 20px;
+      background-color: #ffffff;
+    }
+    
+    /* RWD 調整 */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 2.5rem 0;
+      }
+    
+      .hero-overlay {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+      }
+    
+      .hero-title {
+        font-size: 1.6rem;
+      }
+    
+      .hero-slider {
+        min-height: 320px;
+      }
+    
+      .hero-dots {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+      }
+    }
 
+    
 /* 手機版先不用 mega menu，之後再做 RWD 菜單 */
   @media (max-width: 720px) {
     .nav-links {
