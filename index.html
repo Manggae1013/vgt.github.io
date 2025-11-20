@@ -445,6 +445,14 @@
         transform: scale(1);
       }
 
+      .slide-link {
+        position: absolute;
+        inset: 0;           /* 讓超連結覆蓋整張圖片 */
+        z-index: 5;         /* 高於背景圖 */
+        display: block;
+        text-decoration: none;
+      }
+    
     /* RWD 調整 */
     @media (max-width: 768px) {
       .hero {
@@ -1140,14 +1148,17 @@
     <section class="hero">
       <div class="hero-slider hero-slider-full">
         <!-- 幻燈片 1 -->
-        <div class="hero-slide active" style="background-image: url('images/hero1.jpg');"></div>
-        <a href="https://www.volkswagen-group.com/en"></a>
+        <div class="hero-slide active" style="background-image: url('images/hero1.jpg');">
+          <a href="https://www.volkswagen-group.com/en"></a>
+        </div>
         <!-- 幻燈片 2 -->
-        <div class="hero-slide" style="background-image: url('images/hero2.jpg');"></div>
-        <a href="https://www.volkswagen-group.com/en"></a>
+        <div class="hero-slide" style="background-image: url('images/hero2.jpg');">
+          <a href="https://www.volkswagen-group.com/en"></a>
+        </div>
         <!-- 幻燈片 3 -->
-        <div class="hero-slide" style="background-image: url('images/hero3.jpg');"></div>
-        <a href="https://www.volkswagen-group.com/en"></a>
+        <div class="hero-slide" style="background-image: url('images/hero3.jpg');">
+          <a href="https://www.volkswagen-group.com/en"></a>
+        </div>
     
         <!-- 左右切換按鈕 -->
         <button class="hero-nav hero-nav-prev" aria-label="上一張">&#10094;</button>
