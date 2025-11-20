@@ -1163,6 +1163,75 @@
       </div>
     </section>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slider = document.querySelector(".hero-slider");
+        if (!slider) return; // 安全檢查，避免其他頁面報錯
+    
+        const slides = slider.querySelectorAll(".hero-slide");
+        const dots = slider.querySelectorAll(".hero-dot");
+        const prevBtn = slider.querySelector(".hero-nav-prev");
+        const nextBtn = slider.querySelector(".hero-nav-next");
+    
+        let currentIndex = 0;
+        const intervalTime = 5000; // 每 5 秒換一張
+        let timer = null;
+    
+        function goToSlide(index) {
+          slides[currentIndex].classList.remove("active");
+          dots[currentIndex].classList.remove("active");
+    
+          currentIndex = (index + slides.length) % slides.length;
+    
+          slides[currentIndex].classList.add("active");
+          dots[currentIndex].classList.add("active");
+        }
+    
+        function nextSlide() {
+          goToSlide(currentIndex + 1);
+        }
+    
+        function prevSlide() {
+          goToSlide(currentIndex - 1);
+        }
+    
+        function resetTimer() {
+          if (timer) {
+            clearInterval(timer);
+          }
+          timer = setInterval(nextSlide, intervalTime);
+        }
+    
+        // 左右按鈕
+        if (nextBtn) {
+          nextBtn.addEventListener("click", function () {
+            nextSlide();
+            resetTimer();
+          });
+        }
+    
+        if (prevBtn) {
+          prevBtn.addEventListener("click", function () {
+            prevSlide();
+            resetTimer();
+          });
+        }
+    
+        // 小圓點點擊
+        dots.forEach(function (dot) {
+          dot.addEventListener("click", function () {
+            const index = parseInt(dot.getAttribute("data-index"), 10);
+            goToSlide(index);
+            resetTimer();
+          });
+        });
+    
+        // 啟動自動輪播
+        resetTimer();
+      });
+    </script>
+
+  
     <!-- Our Commitments 區 -->
     <section class="commitments" id="commitments">
       <div class="container">
