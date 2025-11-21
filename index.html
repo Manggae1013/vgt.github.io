@@ -1384,7 +1384,25 @@
         </div>
       </div>
     </section>
-
+  
+    <script>
+      fetch("news.json")
+        .then(r => r.json())
+        .then(data => {
+          const grid = document.querySelector(".articles-grid");
+          grid.innerHTML = data.map(article => `
+            <article class="article-card">
+              <div class="article-body">
+                <div class="article-meta">${article.date}</div>
+                <h3 class="article-title">${article.title}</h3>
+                <p class="article-excerpt">${article.excerpt}</p>
+                <a href="${article.url}" class="article-link">Read more</a>
+              </div>
+            </article>
+          `).join("");
+        });
+    </script>
+      
     <!-- Join Us 區 -->
     <section class="join" id="careers">
       <div class="container">
