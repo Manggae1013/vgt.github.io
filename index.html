@@ -370,6 +370,10 @@
       justify-content: center;
       cursor: pointer;
       transition: background 0.2s ease;
+      position: absolute;   /* ← 必加：讓箭頭浮在圖片上 */
+      top: 50%;             /* ← 垂直置中 */
+      transform: translateY(-50%);
+      z-index: 10;          /* ← 讓箭頭永遠在最上層 */
     }
     
     .hero-nav-prev {
