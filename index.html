@@ -747,8 +747,11 @@
     }
 
     .article-media {
+      width: 100%;
       height: 160px;
-      background: linear-gradient(135deg, #2b4f7c, #7aa3c8);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .article-body {
@@ -1413,34 +1416,44 @@
           `).join("");
         });
     </script>
-      <script>
-        fetch("news.json")
-          .then((r) => r.json())
-          .then((data) => {
-            const container = document.querySelector("#latest-news");
-            if (!container) return;
         
-            container.innerHTML = data
-              .map(
-                (n) => `
-                <article class="news-card">
-                  <div class="news-media" style="background-image:url('${n.image}')"></div>
-        
-                  <div class="news-body">
-                    <div class="news-meta">${n.date} ｜ ${n.category}</div>
-        
-                    <h3 class="news-title">${n.title}</h3>
-        
-                    <p class="news-excerpt">${n.excerpt}</p>
-        
-                    <a class="news-link" href="${n.url}">Read more →</a>
+    <script>
+      fetch("news.json")
+        .then(res => res.json())
+        .then(data => {
+          const container = document.querySelector("#latest-news");
+          container.innerHTML = data
+            .map(
+              n => `
+              <article class="article-card">
+                
+                <!-- 上半部：用每筆資料的 image -->
+                <div class="article-media"
+                     style="background-image:url('${n.image}')">
+                </div>
+      
+                <!-- 下半部 -->
+                <div class="article-body">
+                  <div class="article-meta">
+                    <span>${n.date}</span>
+                    ${n.category ? `<span>${n.category}</span>` : ""}
+                    ${n.brand ? `<span>${n.brand}</span>` : ""}
                   </div>
-                </article>
-              `
-              )
-              .join("");
-          });
-        </script>
+      
+                  <h3 class="article-title">${n.title}</h3>
+      
+                  <p class="article-excerpt">${n.excerpt}</p>
+      
+                  <a href="${n.url}" class="article-link">Read more</a>
+                </div>
+      
+              </article>
+            `
+            )
+            .join("");
+        });
+      </script>
+
 
     <!-- Join Us 區 -->
     <section class="join" id="careers">
