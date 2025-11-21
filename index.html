@@ -359,10 +359,16 @@
 
     /* 左右箭頭貼邊 */
     .hero-nav {
+      width: 48px;
+      height: 48px;
       background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.95);
       color: #ffffff;
-      backdrop-filter: none;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
       transition: background 0.2s ease;
     }
     
@@ -375,7 +381,7 @@
     }
     
     .hero-nav:hover {
-      background: rgba(255, 255, 255, 0.12);  /* 淡淡白霧 */
+      background: rgba(255, 255, 255, 0.15);  /* 淡淡白霧 */
     }
 
     /* 小圓點 */
@@ -958,7 +964,7 @@
           <ul>
             <!-- 集團：有 mega menu 的選項 -->
             <li class="nav-item has-mega">
-              <a href="#group">集團</a>
+              <a href="#group">集團背景</a>
         
               <div class="mega-menu">
                 <div class="mega-inner">
@@ -1001,7 +1007,7 @@
         
             <!-- 品牌：也有自己的 mega menu -->
             <li class="nav-item has-mega">
-              <a href="#brands">品牌</a>
+              <a href="#brands">品牌特色</a>
         
               <div class="mega-menu">
                 <div class="mega-inner">
