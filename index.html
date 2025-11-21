@@ -420,11 +420,15 @@
       
       .hero-slider-full {
         position: relative;
-        width: 100%;        /* 👉 滿版寬度 */
-        height: 70vh;       /* 👉 高度你可以調成 60–80vh */
-        min-height: 520px;  /* 👉 避免太矮 */
+        width: 100%;
+        height: 70vh;
+        min-height: 520px;
+        
+        background: radial-gradient(circle at top left, #1c3c57 0, #020c14 55%); 
+        /* ⭐ 把藍色背景移到這裡 */
+      
         overflow: hidden;
-        border-radius: 0;   /* 👉 若想圓角可以改成 12px */
+        border-radius: 0;
       }
       
       .hero-slide {
@@ -486,10 +490,10 @@
 
 
     /* ===== 主視覺區（Hero） ===== */
+    /* Hero section 不要背景也不要 padding */
     .hero {
-      background: radial-gradient(circle at top left, #1c3c57 0, #020c14 55%);
-      color: #ffffff;
-      padding: 52px 0 40px;
+      padding: 0;
+      background: none;   /* ⭐ 移除藍色背景 */
     }
 
     .hero-grid {
