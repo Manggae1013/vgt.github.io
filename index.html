@@ -266,12 +266,16 @@
       opacity: 0;
       transform: scale(1.05);
       transition: opacity 0.8s ease, transform 1.2s ease;
+      pointer-events: none;  /* 預設不能點 */
+      z-index: 0;
     }
     
     /* 顯示中的那一張 */
     .hero-slide.active {
       opacity: 1;
       transform: scale(1);
+      pointer-events: auto;  /* 只有 active 可以被點到 */
+      z-index: 1;
     }
     
 
