@@ -744,6 +744,15 @@
       display: flex;
       flex-direction: column;
       box-shadow: 0 6px 18px rgba(10, 26, 44, 0.05);
+      transition: transform .25s ease, box-shadow .25s ease;
+      text-decoration: none;   /* 變成 <a> 後，去掉底線 */
+      color: inherit;          /* 文字顏色沿用原本設定 */
+      cursor: pointer;         /* 滑鼠變成手指 */
+    }
+    
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(10, 26, 44, 0.12);
     }
 
     .article-media {
@@ -1416,7 +1425,7 @@
             grid.innerHTML = data
               .map(
                 n => `
-                  <article class="article-card">
+                  <a class="article-card" href="${n.url}">
                     <!-- 上半：圖片（16:9） -->
                     <div class="article-media"
                          style="background-image:url('${n.image}')"></div>
@@ -1431,9 +1440,8 @@
     
                       <h3 class="article-title">${n.title}</h3>
                       <p class="article-excerpt">${n.excerpt}</p>
-                      <a href="${n.url}" class="article-link">Read more</a>
                     </div>
-                  </article>
+                  </a>
                 `
               )
               .join("");
