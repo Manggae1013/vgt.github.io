@@ -789,6 +789,70 @@
     .article-link:hover {
       text-decoration: underline;
     }
+    
+    /* ===== 最新新聞字卡（有圖片 16:9） ===== */
+    
+    .news-card {
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 18px rgba(10, 26, 44, 0.06);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(10, 26, 44, 0.12);
+    }
+    
+    /* 16:9 圖片 */
+    .news-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    /* 內容區 */
+    .news-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .news-meta {
+      font-size: 11px;
+      color: #6e7b88;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+    
+    .news-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e2732;
+    }
+    
+    .news-excerpt {
+      font-size: 13px;
+      color: #4a5563;
+      flex: 1;
+    }
+    
+    .news-link {
+      font-size: 13px;
+      color: #205f9d;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+    
+    .news-link:hover {
+      text-decoration: underline;
+    }
 
     /* ===== Join Us 區 ===== */
     .join {
@@ -1330,60 +1394,7 @@
           <a href="#" class="section-link">View all</a>
         </div>
 
-        <div class="articles-grid">
-          <!-- 文章 1 -->
-          <article class="article-card">
-            <div class="article-media"></div>
-            <div class="article-body">
-              <div class="article-meta">
-                <span>2025 / 08 / 06</span>
-                <span>Media Releases</span>
-                <span>VW Passenger Vehicles</span>
-              </div>
-              <h3 class="article-title">全新純電車款於台灣正式亮相，開啟新世代移動篇章</h3>
-              <p class="article-excerpt">
-                Volkswagen Group Taiwan 宣布全新純電車款於台灣正式上市，以創新科技與直覺操作體驗，回應日益成長的電動車市場需求。
-              </p>
-              <a href="#" class="article-link">Read more</a>
-            </div>
-          </article>
-
-          <!-- 文章 2 -->
-          <article class="article-card">
-            <div class="article-media"></div>
-            <div class="article-body">
-              <div class="article-meta">
-                <span>2025 / 05 / 14</span>
-                <span>Corporate</span>
-                <span>Volkswagen Group Taiwan</span>
-              </div>
-              <h3 class="article-title">Volkswagen Group Taiwan 宣布關鍵管理團隊調整</h3>
-              <p class="article-excerpt">
-                為持續強化在台營運韌性與市場佈局，Volkswagen Group Taiwan 宣布管理團隊調整，以更敏捷的跨品牌協作回應快速變化的產業環境。
-              </p>
-              <a href="#" class="article-link">Read more</a>
-            </div>
-          </article>
-
-          <!-- 文章 3 -->
-          <article class="article-card">
-            <div class="article-media"></div>
-            <div class="article-body">
-              <div class="article-meta">
-                <span>2025 / 03 / 04</span>
-                <span>Events</span>
-                <span>All Brands</span>
-              </div>
-              <h3 class="article-title">Volkswagen Group Taiwan 參與大型車展，完整呈現電動與燃油產品陣容</h3>
-              <p class="article-excerpt">
-                於台灣指標車展中，我們攜手多個品牌共同展出最新車型，從純電休旅到經典性能車款，展現集團完整產品矩陣與未來方向。
-              </p>
-              <a href="#" class="article-link">Read more</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+ <div class="articles-grid" id="latest-news"></div>
   
     <script>
       fetch("news.json")
@@ -1402,7 +1413,35 @@
           `).join("");
         });
     </script>
-      
+      <script>
+        fetch("news.json")
+          .then((r) => r.json())
+          .then((data) => {
+            const container = document.querySelector("#latest-news");
+            if (!container) return;
+        
+            container.innerHTML = data
+              .map(
+                (n) => `
+                <article class="news-card">
+                  <div class="news-media" style="background-image:url('${n.image}')"></div>
+        
+                  <div class="news-body">
+                    <div class="news-meta">${n.date} ｜ ${n.category}</div>
+        
+                    <h3 class="news-title">${n.title}</h3>
+        
+                    <p class="news-excerpt">${n.excerpt}</p>
+        
+                    <a class="news-link" href="${n.url}">Read more →</a>
+                  </div>
+                </article>
+              `
+              )
+              .join("");
+          });
+        </script>
+
     <!-- Join Us 區 -->
     <section class="join" id="careers">
       <div class="container">
