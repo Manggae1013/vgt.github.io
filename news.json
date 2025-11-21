@@ -1,8 +1,27 @@
 [
   {
-    "date": "2025/02/10",
-    "title": "最新車款發布",
-    "excerpt": "Volkswagen Group Taiwan 宣布...",
+    "date": "2025 / 02 / 20",
+    "category": "Volkswagen Passenger Vehicles",
+    "title": "全新純電車款於台灣正式亮相，開啟全新移動篇章",
+    "excerpt": "Volkswagen Group Taiwan 發布全新純電車款，以創新科技與嶄新設計領先市場。",
+    "image": "images/news1.jpg",
     "url": "news/news1.html"
+  },
+  {
+    "date": "2025 / 01 / 15",
+    "category": "Corporate",
+    "title": "Volkswagen Group Taiwan 宣布 2025 年全新產品策略",
+    "excerpt": "聚焦電動化佈局、智慧科技與在地化服務，全面提升品牌競爭力。",
+    "image": "images/news2.jpg",
+    "url": "news/news2.html"
+  },
+  {
+    "date": "2024 / 12 / 22",
+    "category": "Events",
+    "title": "Volkswagen 參與年度大型車展，展示多款重點車型",
+    "excerpt": "包括電動休旅、家庭 MPV 與性能車款，完整展現品牌矩陣。",
+    "image": "images/news3.jpg",
+    "url": "news/news3.html"
   }
 ]
+
