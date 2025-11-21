@@ -356,26 +356,24 @@
     .btn-outline:hover {
       background-color: rgba(255, 255, 255, 0.06);
     }
-    
-    /* 左右切換箭頭 */
+
+    /* 左右箭頭貼邊 */
     .hero-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       z-index: 3;
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 999px;
-      border: 1px solid #ffffff;      /* 白色圓框 */
-      background: transparent; /* 淡淡半透明底，不喜歡可以改 transparent */
+      border: 1px solid #ffffff;
+      background: rgba(0, 0, 0, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      color: #ffffff;                 /* 箭頭顏色白色 */
-      font-weight: 50;
-      font-size: 20px;
-      line-height: 1;
+      color: #ffffff;
+      font-size: 22px;
       backdrop-filter: blur(4px);
     }
     
@@ -408,7 +406,6 @@
         border: none;
         background-color: rgba(255, 255, 255, 0.35);
         cursor: pointer;
-        padding: 0;
       }
       
       .hero-dot.active {
@@ -416,39 +413,39 @@
         background-color: #ffffff;
       }
 
-          /* hero 外層不需要 padding，讓整塊是圖片 */
       .hero {
-        background-color: #001b3f; /* 你要也可以拿掉 */
-        padding:0;          /* 想要上下一點留白就留，想真的貼滿可以改成 0 */
+        background: radial-gradient(circle at top left, #1c3c57 0, #020c14 55%);
+        padding: 0;   /* 👉 不要上下留白 */
       }
       
-      /* 滿版圖片的 slider */
       .hero-slider-full {
         position: relative;
-        width: 100%;
-        max-width: 100%;      /* 如果想真的從左到右 100%，可以把這行刪掉 */
-        margin: 0 auto;
-        min-height: 460px;
-        height: 65vh;           /* 高度可以自己調，例如 70vh / 600px */
-        border-radius: 1.5rem;  /* 如果不要圓角就改成 0 */
+        width: 100%;        /* 👉 滿版寬度 */
+        height: 70vh;       /* 👉 高度你可以調成 60–80vh */
+        min-height: 520px;  /* 👉 避免太矮 */
         overflow: hidden;
+        border-radius: 0;   /* 👉 若想圓角可以改成 12px */
       }
       
       .hero-slide {
         position: absolute;
         inset: 0;
-        background-size: cover;
+        background-size: cover;      /* 👉 圖片不變形、滿版鋪滿 */
         background-position: center;
+        background-repeat: no-repeat;
         opacity: 0;
         transform: scale(1.05);
         transition: opacity 0.8s ease, transform 1.2s ease;
+      
+        pointer-events: none;  /* 👉 不會遮到 active 的連結 */
       }
       
       .hero-slide.active {
         opacity: 1;
         transform: scale(1);
+        pointer-events: auto; /* 👉 可以點連結 */
+        z-index: 1;
       }
-
       .slide-link {
         position: absolute;
         inset: 0;           /* 讓超連結覆蓋整張圖片 */
