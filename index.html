@@ -45,15 +45,21 @@
       z-index: 30;
   }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 0;
-      gap: 16px;
+   .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* ⭐ 左對齊，不再平均分散 */
+    padding: 8px 0;
+    gap: 16px;
   }
 
 /* 左上角 LOGO 文字 */
+
+/* 左邊大標固定在左側，不被擠壓 */
+    .nav-left {
+      flex-shrink: 0;
+    }
+    
     .nav-left a {
       color: #ffffff;
       text-decoration: none;
@@ -131,6 +137,7 @@
 
     /* 右側容器：選單 + 語言 + 搜尋 */
     .nav-right {
+      margin-left: auto;  /* ⭐ 把整個右側推到最右邊 */
       display: flex;
       align-items: center;
       gap: 16px;
@@ -141,6 +148,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      margin-left: 24px;   /* ⭐ 這裡決定跟小標的距離，想多就加大 */
     }
     
 /* Icon 基礎設定（白色線條 SVG） */
