@@ -1002,64 +1002,126 @@
       }
     }
 
-    /* ===== Discover more 區 ===== */
-    .discover {
-      padding: 70px 0 60px;
-      background-color: #012734;
-      border-bottom: 1px solid #e5e7eb;
-    }
-      
-      .discover-inner {
-        max-width: 760px;        /* 澳洲官網差不多 760px */
-        margin: 0 auto;
-        text-align: center;       /* ⭐ 重點：置中 */
+/* ===== Discover more 區（澳洲風格） ===== */
+      .discover {
+        background-color: #ffffff;
+        padding: 60px 0 70px;
+        border-top: 1px solid #e5e7eb;
       }
       
-      .discover-title {
-        font-size: 32px;
+      .discover-header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      
+      .discover-kicker {
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #7a8692;
+        margin-bottom: 8px;
+      }
+      
+      .discover-heading {
+        font-size: 24px;
         font-weight: 700;
-        margin-bottom: 12px;
         color: #0b1116;
       }
       
-    .discover-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
+      .discover-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+      
+      /* 單張卡片 */
+      .discover-card {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+      }
+      
+      /* 背景圖片 */
+      .discover-image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.4s ease, filter 0.4s ease;
+      }
+      
+      /* 上層內容（標籤 + 標題 + 按鈕） */
+      .discover-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 18px 18px 20px;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.55),
+          rgba(0, 0, 0, 0.15),
+          transparent
+        );
+        color: #ffffff;
+        transition: background 0.4s ease, color 0.4s ease;
+      }
+      
+      .discover-tag {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        opacity: 0.85;
+        margin-bottom: 4px;
+      }
+      
+      .discover-title {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      
+      /* 按鈕樣式 */
+      .discover-btn {
+        align-self: flex-start;
+        padding: 6px 16px;
+        border-radius: 999px;
+        border: 1px solid #ffffff;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease,
+          border-color 0.3s ease;
+      }
+      
+      /* hover 效果：圖片模糊 + 反白 + 按鈕變藍底 */
+      .discover-card:hover .discover-image {
+        transform: scale(1.05);
+        filter: brightness(1.3) blur(2px); /* ⭐ 模糊＋變亮 */
+      }
+      
+      .discover-card:hover .discover-overlay {
+        background: rgba(255, 255, 255, 0.78); /* ⭐ 整塊偏白 */
+        color: #0b1116;                        /* 文字變深色 */
+        align-items: center;
+        justify-content: center;               /* 文字與按鈕集中在中間 */
+        text-align: center;
+      }
+      
+      .discover-card:hover .discover-btn {
+        border-color: #0a66c2;
+        background: #0a66c2;
+        color: #ffffff;
+        transform: translateY(-1px);
+      }
 
-    .discover-card {
-      background-color: #ffffff;
-      border-radius: 16px;
-      padding: 16px 16px 14px;
-      box-shadow: 0 6px 18px rgba(10, 26, 44, 0.05);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .discover-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #7a8692;
-    }
-
-    .discover-text {
-      font-size: 13px;
-      color: #4c5660;
-      flex: 1;
-    }
-
-    .discover-link {
-      font-size: 13px;
-      color: #205f9d;
-      margin-top: 6px;
-    }
-
-    .discover-link:hover {
-      text-decoration: underline;
-    }
 
     /* ===== Footer ===== */
     footer {
@@ -1637,45 +1699,51 @@
     </section>
 
 
-    <!-- Discover more 區 -->
+    <!-- Discover more 區（新版：澳洲風格） -->
     <section class="discover" id="brands">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 class="discover-title">Discover more</h2>
-          </div>
+        <div class="discover-header">
+          <p class="discover-kicker">Discover more</p>
+          <h2 class="discover-heading">探索福斯集團在台灣的佈局</h2>
         </div>
 
         <div class="discover-grid">
-          <article class="discover-card">
-            <div class="discover-label">Our Vision</div>
-            <h3 class="discover-title">為台灣打造更值得嚮往的移動選擇</h3>
-            <p class="discover-text">
-              我們的願景，是成為台灣最值得信賴且最具吸引力的移動解決方案提供者，讓每一次移動都兼具安心、效率與情感連結。
-            </p>
-            <a href="#" class="discover-link">Learn more</a>
-          </article>
+          <!-- 卡片 1：願景 -->
+          <a class="discover-card" href="#">
+            <div class="discover-image"
+                 style="background-image:url('images/discover-vision.jpg');"></div>
+            <div class="discover-overlay">
+              <span class="discover-tag">Our Vision</span>
+              <h3 class="discover-title">為台灣打造更值得嚮往的移動選擇</h3>
+              <button class="discover-btn">願景</button>
+            </div>
+          </a>
 
-          <article class="discover-card">
-            <div class="discover-label">Our Strategy</div>
-            <h3 class="discover-title">在電動化、數位化與在地化之間找到平衡</h3>
-            <p class="discover-text">
-              透過電動車產品導入、數據與數位服務優化，以及與在地合作夥伴的緊密合作，我們持續調整步伐，回應台灣市場的真實需求。
-            </p>
-            <a href="#" class="discover-link">Our Strategy</a>
-          </article>
+          <!-- 卡片 2：策略 -->
+          <a class="discover-card" href="#">
+            <div class="discover-image"
+                 style="background-image:url('images/discover-strategy.jpg');"></div>
+            <div class="discover-overlay">
+              <span class="discover-tag">Our Strategy</span>
+              <h3 class="discover-title">在電動化、數位化與在地化之間找到平衡</h3>
+              <button class="discover-btn">策略</button>
+            </div>
+          </a>
 
-          <article class="discover-card" id="contact">
-            <div class="discover-label">Our Presence</div>
-            <h3 class="discover-title">在地根基，串聯全台服務網絡</h3>
-            <p class="discover-text">
-              透過全台授權經銷商與服務據點，我們將品牌價值落實在每一次接觸之中，無論是賞車試駕、交車體驗或售後服務。
-            </p>
-            <a href="#" class="discover-link">Our presence in Taiwan</a>
-          </article>
+          <!-- 卡片 3：定位 / 佈局 -->
+          <a class="discover-card" href="#">
+            <div class="discover-image"
+                 style="background-image:url('images/discover-presence.jpg');"></div>
+            <div class="discover-overlay">
+              <span class="discover-tag">Our Presence</span>
+              <h3 class="discover-title">在地根基，串聯全台服務網絡</h3>
+              <button class="discover-btn">定位</button>
+            </div>
+          </a>
         </div>
       </div>
     </section>
+
   </main>
 
   <!-- Footer -->
