@@ -143,36 +143,42 @@
       gap: 10px;
     }
     
-    /* 小 icon 按鈕的基礎樣式 */
+/* Icon 基礎設定（白色線條 SVG） */
+    .icon {
+      width: 20px;
+      height: 20px;
+      stroke: #c2d0dc;
+      transition: stroke 0.2s ease;
+    }
+
+/* 按鈕本體 */
     .icon-btn {
       border: none;
       background: transparent;
-      color: #c2d0dc;
-      font-size: 16px;
-      cursor: pointer;
       padding: 4px;
-      display: inline-flex;
+      cursor: pointer;
+      display: flex;
       align-items: center;
       justify-content: center;
     }
     
-    .icon-btn:hover {
-      color: #ffffff;
+    /* hover → 變成純白，更像韓國官網 */
+    .icon-btn:hover .icon {
+      stroke: #ffffff;
     }
     
-    /* 中間那條分隔線 */
+    /* 分隔線 */
     .nav-divider {
       width: 1px;
       height: 18px;
       background-color: rgba(255, 255, 255, 0.4);
     }
     
-    /* header 下方的額外區塊（語言 + 搜尋） */
+    /* 語言與搜尋欄那塊 */
     .nav-extra {
       background-color: #012734;
       color: #ffffff;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     /* 語言選單 */
