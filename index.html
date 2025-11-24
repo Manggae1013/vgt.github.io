@@ -128,6 +128,136 @@
       /* 這個 li 不要 position: relative，避免方塊以它為基準歪掉 */
       padding-bottom: 0;  /* 保留這個，避免滑鼠移到下面時 hover 掉 */
     }
+
+    /* 右側容器：選單 + 語言 + 搜尋 */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    /* 語言 / 搜尋 icon 區 */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    /* 小 icon 按鈕的基礎樣式 */
+    .icon-btn {
+      border: none;
+      background: transparent;
+      color: #c2d0dc;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .icon-btn:hover {
+      color: #ffffff;
+    }
+    
+    /* 中間那條分隔線 */
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* header 下方的額外區塊（語言 + 搜尋） */
+    .nav-extra {
+      background-color: #012734;
+      color: #ffffff;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0 16px;
+    }
+    
+    /* 語言選單 */
+    .lang-menu {
+      display: none;                 /* 預設關閉 */
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      font-size: 12px;
+      padding: 6px 0;
+    }
+    
+    .lang-menu a {
+      color: #c2d0dc;
+      text-decoration: none;
+    }
+    
+    .lang-menu a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    
+    .lang-sep {
+      color: #6f8595;
+    }
+    
+    /* 搜尋列 */
+    .search-bar {
+      display: none;                 /* 預設關閉 */
+      padding: 8px 0 10px;
+    }
+    
+    .search-bar form {
+      max-width: 320px;
+      margin-left: auto;             /* 靠右 */
+      display: flex;
+      gap: 6px;
+    }
+    
+    .search-bar input {
+      flex: 1;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #264556;
+      background-color: #021824;
+      color: #ffffff;
+      font-size: 13px;
+    }
+    
+    .search-bar input::placeholder {
+      color: #7a92a3;
+    }
+    
+    .search-bar button {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #ffffff;
+      background-color: #ffffff;
+      color: #012734;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    
+    .search-bar button:hover {
+      background-color: #e5edf5;
+    }
+    
+    /* JS 會加上的「打開」狀態 */
+    .lang-menu.open {
+      display: flex;
+    }
+    
+    .search-bar.open {
+      display: block;
+    }
+    
+    /* 手機 RWD：可以視情況把 nav-actions 藏起來 */
+    @media (max-width: 720px) {
+      .nav-right {
+        justify-content: flex-end;
+      }
+      /* 如果手機版不需要語言 / 搜尋，可以暫時隱藏 */
+      /* .nav-actions { display: none; } */
+    }
+
 /* ===== 集團 mega menu 方塊 ===== */
     .mega-menu {
       position: absolute;
@@ -1227,7 +1357,9 @@
           <span>VOLKSWAGEN GROUP TAIWAN</span>
         </a>
       </div>
-
+  
+      <!-- 右側：選單 + 語言 / 搜尋 -->
+      <div class="nav-right">
         <nav class="nav-links">
           <ul>
             <!-- 集團：有 mega menu 的選項 -->
@@ -1420,9 +1552,74 @@
             </li>
           </ul>
         </nav>
-
+  
+        <!-- 新增：語言切換 + 搜尋 -->
+        <div class="nav-actions">
+          <!-- 🌐 小地球：打開語言選單 -->
+          <button class="icon-btn lang-toggle" type="button" aria-label="切換語言">
+            🌐
+          </button>
+  
+          <!-- 垂直分隔線 -->
+          <span class="nav-divider"></span>
+  
+          <!-- 🔍 搜尋按鈕 -->
+          <button class="icon-btn search-toggle" type="button" aria-label="搜尋">
+            🔍
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 放在 header 裡底下：語言選單 + 搜尋列 -->
+    <div class="nav-extra">
+      <!-- 語言選單：預設藏起來，按小地球才打開 -->
+      <div class="lang-menu">
+        <!-- 依照方案一：兩個不同 html 檔 -->
+        <a href="index.html">繁體中文</a>
+        <span class="lang-sep">/</span>
+        <a href="index-en.html">English</a>
+      </div>
+  
+      <!-- 搜尋欄：按🔍才打開 -->
+      <div class="search-bar">
+        <form action="#">
+          <input type="text" placeholder="搜尋關鍵字…" />
+          <button type="submit">搜尋</button>
+        </form>
+      </div>
     </div>
   </header>
+
+/*放大鏡搜尋*/
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const langToggle = document.querySelector(".lang-toggle");
+    const searchToggle = document.querySelector(".search-toggle");
+    const langMenu = document.querySelector(".lang-menu");
+    const searchBar = document.querySelector(".search-bar");
+
+    if (langToggle && langMenu) {
+      langToggle.addEventListener("click", function () {
+        // 切換語言選單開關
+        langMenu.classList.toggle("open");
+      });
+    }
+
+    if (searchToggle && searchBar) {
+      searchToggle.addEventListener("click", function () {
+        // 切換搜尋列開關
+        searchBar.classList.toggle("open");
+
+        // 打開後自動 focus 輸入框
+        if (searchBar.classList.contains("open")) {
+          const input = searchBar.querySelector("input");
+          if (input) input.focus();
+        }
+      });
+    }
+  });
+</script>
 
   <!-- Hero 區 -->
   <main>
