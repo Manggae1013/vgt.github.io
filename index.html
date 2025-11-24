@@ -197,6 +197,11 @@
     .mega-more:hover {
       text-decoration: underline;
     }
+
+    /* 讓 mega menu 裡的文字不套用 nav 的 hover 底線動畫 */
+    .mega-menu a::after {
+      display: none !important;
+    }
     
     /* 右側三個 box */
     .mega-right {
