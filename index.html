@@ -870,16 +870,16 @@
     /* 兩欄排版：左圖右文 */
     .join-us-inner {
       max-width: 1120px;
-      margin: 32px 0 auto;
+      margin: 24px 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 6rem;
+      gap: 4rem;
       align-items: flex-start;
     }
     
     /* 左邊圖片卡片外框 */
     .join-us-image-card {
-      flex: 1 1 320px;
+      flex: 0 0 360px;     /* 固定寬度 360px，看起來比較像一個穩定的卡片 */
       border-radius: 24px;
       overflow: hidden;
       position: relative;
@@ -912,7 +912,7 @@
       
     .join-us-content p {
       line-height: 1.7;
-      max-width: 32rem;
+      margin-bottom: 0.4rem;
     }
     
     /* 底部：一條直線 + LinkedIn 小框框 */
@@ -1526,6 +1526,7 @@
     <!-- Join Us 區 -->
     <section class="join" id="careers">
       <div class="container">
+        <!-- 上面標題區：保持跟其他 section 一樣的 layout -->
         <div class="section-header">
           <div>
             <div class="section-kicker">Careers</div>
@@ -1534,19 +1535,19 @@
               德國福斯集團為全球汽車產業領導者，旗下擁有多達 12 個品牌，並於全球 12 國設有超過 29 處生產基地。Volkswagen 以其創新科技、卓越品質與駕馭樂趣，深受全球與台灣消費者喜愛。
             </p>
           </div>
-
-        <!-- 這裡開始：左圖右文 -->
-        <div class="join-us-inner">
-          <!-- 左邊：圖片卡片（取代原本的藍色框） -->
-          <div class="join-us-image-card">
-            <!-- 換成你自己的圖片路徑 -->
-            <img src="images/join-us.jpg" alt="Volkswagen Group Taiwan Team">
-          </div>
+          <a href="#" class="section-link-lmvj">View job offers</a>
         </div>
 
-          <!-- 右邊：原本文字 + 直線 + LinkedIn 小框 -->
+        <!-- 這裡才開始：左圖右文區塊 -->
+        <div class="join-us-inner">
+          <!-- 左邊圖片 -->
+          <figure class="join-us-image-card">
+            <img src="images/join-us.jpg" alt="Volkswagen Group Taiwan Team">
+          </figure>
+
+          <!-- 右邊文字 + LinkedIn -->
           <div class="join-us-content">
-            <div>
+            <div class="join-us-copy">
               <p>
                 在台灣，Volkswagen 早自 60 年前便以經典金龜車 The Beetle 深植人心，並持續推出如 The Polo、The Golf、The T-Roc、The Tiguan 等暢銷車款，成為德國工藝與品質的代名詞。
               </p>  
@@ -1564,7 +1565,7 @@
               </p>
             </div>
 
-            <!-- 底部：一條直線 + LinkedIn 小框框 -->
+            <!-- 底部：線 + LinkedIn 按鈕 -->
             <div class="join-us-footer">
               <span class="join-us-line"></span>
               <a
@@ -1580,6 +1581,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- Discover more 區 -->
     <section class="discover" id="brands">
