@@ -710,17 +710,16 @@
 
     .commitments-visual-list li {
       margin-bottom: 6px;
-      display: flex;
-      align-items: flex-start;
-      gap: 100px;
+      display: inline-flex;
+      align-items: center;
     }
-    
+        
     .dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background-color: #76d0ff;
-      margin-top: 7px;
+      margin-right: 6px;           /* 重點：只留右邊距離 */
       flex-shrink: 0;
     }
 
