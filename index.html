@@ -887,6 +887,7 @@
     .join-us-image-card:hover img {
       transform: scale(1.08);       /* 滑過去微放大 */
       filter: brightness(1.03);     /* 稍微變亮，看起來比較「聚焦」 */
+      pointer-events: active;  /* 預設不能點 */
     }
     
     /* 右邊文字區 */
@@ -1532,6 +1533,7 @@
           <!-- 左邊圖片 -->
           <figure class="join-us-image-card">
             <img src="images/VGT Office.jpg" alt="Volkswagen Group Taiwan Team">
+            <a href="#">join us</a>
           </figure>
 
           <!-- 右邊文字 + LinkedIn -->
