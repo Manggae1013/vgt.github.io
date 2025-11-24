@@ -1091,19 +1091,26 @@
       }
       
       /* 按鈕樣式 */
-      .discover-btn {
-        align-self: flex-end;
+       .discover-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      
         padding: 6px 16px;
         border-radius: 999px;
         border: 1px solid #ffffff;
         background: rgba(255, 255, 255, 0.12);
+      
         color: #ffffff;
         font-size: 13px;
         font-weight: 600;
+        text-decoration: none;   /* a 預設有底線，這裡要關掉 */
+      
         cursor: pointer;
-        transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease,
-          border-color 0.3s ease;
+        transition: background 0.3s ease, color 0.3s ease,
+          transform 0.2s ease, border-color 0.3s ease;
       }
+
       
       /* hover 效果：圖片模糊 + 反白 + 按鈕變藍底 */
       .discover-card:hover .discover-image {
@@ -1708,49 +1715,50 @@
           <h2 class="discover-heading">探索更多</h2>
         </div>
 
-        <div class="discover-grid">
-          <!-- 卡片 1：願景 -->
-          <a class="discover-card" href="#">
-            <div class="discover-image"
-                 style="background-image:url('images/discover-vision.jpg');"></div>
-            <div class="discover-overlay">
-              <span class="discover-tag">Our Vision</span>
-              <h3 class="discover-title">我們的願景</h3>
-              <button class="discover-btn">
-                <a href="#">了解更多 &#10140; </a>
-              </button>
-            </div>
-          </a>
-
-          <!-- 卡片 2：策略 -->
-          <a class="discover-card" href="#">
-            <div class="discover-image"
-                 style="background-image:url('images/discover-strategy.jpg');"></div>
-            <div class="discover-overlay">
-              <span class="discover-tag">Our Strategy</span>
-              <h3 class="discover-title">策略方針</h3>
-              <button class="discover-btn">
-                <a href="#">了解更多 &#10140; </a>
-              </button>
-            </div>
-          </a>
-
-          <!-- 卡片 3：定位 / 佈局 -->
-          <a class="discover-card" href="#">
-            <div class="discover-image"
-                 style="background-image:url('images/discover-presence.jpg');"></div>
-            <div class="discover-overlay">
-              <span class="discover-tag">Our Presence</span>
-              <h3 class="discover-title">全球佈局</h3>
-              <button class="discover-btn">
-                <a href="#">了解更多 &#10140; </a>
-              </button>
-            </div>
-          </a>
+      <div class="discover-grid">
+      
+        <!-- 卡片 1：願景 -->
+        <div class="discover-card">
+          <div class="discover-image"
+               style="background-image:url('images/discover-vision.jpg');"></div>
+      
+          <div class="discover-overlay">
+            <span class="discover-tag">Our Vision</span>
+            <h3 class="discover-title">我們的願景</h3>
+      
+            <!-- 只有這顆能點 -->
+            <a class="discover-btn" href="vision.html">更多 &rarr;</a>
+          </div>
         </div>
+      
+        <!-- 卡片 2：策略 -->
+        <div class="discover-card">
+          <div class="discover-image"
+               style="background-image:url('images/discover-strategy.jpg');"></div>
+      
+          <div class="discover-overlay">
+            <span class="discover-tag">Our Strategy</span>
+            <h3 class="discover-title">策略方針</h3>
+      
+            <a class="discover-btn" href="strategy.html">更多 &rarr;</a>
+          </div>
+        </div>
+      
+        <!-- 卡片 3：全球佈局 -->
+        <div class="discover-card">
+          <div class="discover-image"
+               style="background-image:url('images/discover-presence.jpg');"></div>
+      
+          <div class="discover-overlay">
+            <span class="discover-tag">Our Presence</span>
+            <h3 class="discover-title">全球佈局</h3>
+      
+            <a class="discover-btn" href="presence.html">更多 &rarr;</a>
+          </div>
+        </div>
+      
       </div>
     </section>
-
   </main>
 
   <!-- Footer -->
