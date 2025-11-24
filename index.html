@@ -870,10 +870,10 @@
     /* 兩欄排版：左圖右文 */
     .join-us-inner {
       max-width: 1120px;
-      margin: 0 auto;
+      margin: 32px 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 4rem;
+      gap: 6rem;
       align-items: flex-start;
     }
     
@@ -900,15 +900,16 @@
     }
     
     /* 右邊文字區 */
-    .join-us-content {
-      font-size: 14px;
-      flex: 1 1 320px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-left: 1.5rem; /* ⭐ 新增：整個文字區往右移一點 */
-    }
-    
+   .join-us-content {
+    font-size: 14px;
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 2rem;   /* 往右退多一點（原本 1.5rem） */
+    padding-top: 0.75rem; /* 往下壓一點，不要貼著圖片上緣 */
+  }
+      
     .join-us-content p {
       line-height: 1.7;
       max-width: 32rem;
@@ -1532,6 +1533,7 @@
             <p class="section-text">
               德國福斯集團為全球汽車產業領導者，旗下擁有多達 12 個品牌，並於全球 12 國設有超過 29 處生產基地。Volkswagen 以其創新科技、卓越品質與駕馭樂趣，深受全球與台灣消費者喜愛。
             </p>
+          </div>
 
         <!-- 這裡開始：左圖右文 -->
         <div class="join-us-inner">
@@ -1540,6 +1542,7 @@
             <!-- 換成你自己的圖片路徑 -->
             <img src="images/join-us.jpg" alt="Volkswagen Group Taiwan Team">
           </div>
+        </div>
 
           <!-- 右邊：原本文字 + 直線 + LinkedIn 小框 -->
           <div class="join-us-content">
