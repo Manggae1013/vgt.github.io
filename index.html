@@ -873,8 +873,8 @@
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 3rem;
-      align-items: stretch;
+      gap: 4rem;
+      align-items: flex-start;
     }
     
     /* 左邊圖片卡片外框 */
@@ -906,6 +906,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      padding-left: 1.5rem; /* ⭐ 新增：整個文字區往右移一點 */
     }
     
     .join-us-content p {
@@ -943,12 +944,6 @@
       color: #0a66c2;
       transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease,
         box-shadow 0.25s ease;
-    }
-    
-    /* 小小的 in 字樣（模仿 LinkedIn）*/
-    .linkedin-pill::before {
-      content: "in";
-      font-weight: 700;
     }
     
     /* hover 效果 */
@@ -1569,6 +1564,7 @@
                 target="_blank"
                 class="linkedin-pill"
               >
+                <img src="images/linkedin-icon.png" alt="LinkedIn" class="linkedin-icon">
                 在 LinkedIn 查看職缺
               </a>
             </div>
