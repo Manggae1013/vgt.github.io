@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>首頁 | 台灣福斯汽車 | Volkswagen Group Taiwan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Volkswagen Group Taiwan – 將德國工藝與在地洞察結合，打造專屬台灣的移動解決方案。">
+  <style>
+    /* ===== 重置與基礎設定 ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      line-height: 1.6;
+      color: #0b1116;
+      background-color: #012734;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+/* ===== 導覽列 ===== */
+    header {
+      background-color: #012734;
+      color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+  }
+
+   .nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* ⭐ 左對齊，不再平均分散 */
+    padding: 8px 0;
+    gap: 16px;
+  }
+
+/* 左上角 LOGO 文字 */
+
+/* 左邊大標固定在左側，不被擠壓 */
+    .nav-left {
+      flex-shrink: 0;
+    }
+    
+    .nav-left a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 20px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+  }
+
+    .nav-left a:hover {
+      opacity: 0.8;
+  }
+
+/* 右側選單區 */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+  }
+
+/* ul / li 排列 */
+    .nav-links ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+  }
+
+    .nav-item {
+      position: static;
+  }
+
+/* 每一個小標文字 */
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+      margin: 0 4px;
+      color: #c2d0dc;
+      text-decoration: none;
+      border-radius: 0;
+      transition: color 0.2s ease;
+  }
+
+/* hover 文字變白 */
+    .nav-links a:hover {
+      color: #ffffff;
+  }
+
+/* 白色底線動畫 */
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px; /* 底線位置，可微調 */
+      width: 100%;
+      height: 2px;
+      background-color: #ffffff;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.25s ease-out;
+  }
+
+/* 滑到選單才展開底線 */
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+  }
+
+/* 有 mega menu 的那顆 li，拉大一點 hover 區 */
+    .nav-item.has-mega {
+      /* 這個 li 不要 position: relative，避免方塊以它為基準歪掉 */
+      padding-bottom: 0;  /* 保留這個，避免滑鼠移到下面時 hover 掉 */
+    }
+
+    /* 右側容器：選單 + 語言 + 搜尋 */
+    .nav-right {
+      margin-left: auto;  /* ⭐ 把整個右側推到最右邊 */
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    /* 語言 / 搜尋 icon 區 */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 24px;   /* ⭐ 這裡決定跟小標的距離，想多就加大 */
+    }
+    
+/* Icon 基礎設定（白色線條 SVG） */
+    .icon {
+      width: 20px;
+      height: 20px;
+      stroke: #c2d0dc;
+      transition: stroke 0.2s ease;
+    }
+
+/* 按鈕本體 */
+    .icon-btn {
+      border: none;
+      background: transparent;
+      padding: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* hover → 變成純白，更像韓國官網 */
+    .icon-btn:hover .icon {
+      stroke: #ffffff;
+    }
+    
+    /* 分隔線 */
+    .nav-divider {
+      width: 2px;
+      height: 18px;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* 語言與搜尋欄那塊 */
+    .nav-extra {
+      background-color: #012734;
+      color: #ffffff;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* 語言選單 */
+    .lang-menu {
+      display: none;                 /* 預設關閉 */
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      font-size: 12px;
+      padding: 6px 0;
+    }
+    
+    .lang-menu a {
+      color: #c2d0dc;
+      text-decoration: none;
+    }
+    
+    .lang-menu a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    
+    .lang-sep {
+      color: #6f8595;
+    }
+    
+    /* 搜尋列 */
+    .search-bar {
+      display: none;                 /* 預設關閉 */
+      padding: 8px 0 10px;
+    }
+    
+    .search-bar form {
+      max-width: 320px;
+      margin-left: auto;             /* 靠右 */
+      display: flex;
+      gap: 6px;
+    }
+    
+    .search-bar input {
+      flex: 1;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #264556;
+      background-color: #021824;
+      color: #ffffff;
+      font-size: 13px;
+    }
+    
+    .search-bar input::placeholder {
+      color: #7a92a3;
+    }
+    
+    .search-bar button {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #ffffff;
+      background-color: #ffffff;
+      color: #012734;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    
+    .search-bar button:hover {
+      background-color: #e5edf5;
+    }
+    
+    /* JS 會加上的「打開」狀態 */
+    .lang-menu.open {
+      display: flex;
+    }
+    
+    .search-bar.open {
+      display: block;
+    }
+    
+    /* 手機 RWD：可以視情況把 nav-actions 藏起來 */
+    @media (max-width: 720px) {
+      .nav-right {
+        justify-content: flex-end;
+      }
+      /* 如果手機版不需要語言 / 搜尋，可以暫時隱藏 */
+      /* .nav-actions { display: none; } */
+    }
+
+/* ===== 集團 mega menu 方塊 ===== */
+    .mega-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;               /* 就貼在 header/nav 底下 */
+      background-color: #012734;
+      color: #ffffff;
+      padding: 24px 0;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(10px);  /* 只往下位移，不再左右飄 */
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 25;
+    }
+
+    
+    /* 內層內容：寬度跟 container 一樣，不會歪一邊 */
+    .mega-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 2fr);
+      gap: 32px;
+    }
+    
+    /* 左側文字區 */
+    .mega-left {
+      font-size: 13px;
+      color: #d6e1ea;
+    }
+    
+    .mega-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #8fb5d5;
+      margin-bottom: 6px;
+    }
+    
+    .mega-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .mega-text {
+      font-size: 13px;
+      color: #d6e1ea;
+      margin-bottom: 6px;
+    }
+    
+    /* 了解更多 → */
+    .mega-more {
+      display: inline-flex;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #ffffff;
+      text-decoration: none;
+      align-items: center;
+    }
+    
+    .mega-more:hover {
+      text-decoration: underline;
+    }
+
+    /* 讓 mega menu 裡的文字不套用 nav 的 hover 底線動畫 */
+    .mega-menu a::after {
+      display: none !important;
+    }
+    
+    /* 右側三個 box */
+    .mega-right {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    
+    .mega-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ffffff; /* 白色底線 */
+      text-decoration: none;
+      color: #d6e1ea;
+    }
+    
+    .mega-box-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+        }
+
+    .mega-box-text {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .mega-box:hover {
+      color: #ffffff;
+    }
+
+/* hover 在集團那顆 li 的時候，顯示 mega menu */
+    .nav-item.has-mega:hover .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    /* === Hero 幻燈片區 === */
+    
+    .hero {
+      background-color: #001b3f; /* 外層深藍背景 */
+      color: #ffffff;
+      padding: 4rem 0;
+    }
+    
+    .hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    
+    .hero-slider {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      min-height: 360px;
+    }
+    
+    /* 背景圖片每一張 */
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 0.8s ease, transform 1.2s ease;
+      pointer-events: none;  /* 預設不能點 */
+      z-index: 0;
+    }
+    
+    /* 顯示中的那一張 */
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;  /* 只有 active 可以被點到 */
+      z-index: 1;
+    }
+    
+
+    
+    /* 文字內容區 */
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      padding: 3rem;
+      max-width: 640px;
+    }
+    
+    .hero-eyebrow {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 0.75rem;
+    }
+    
+    .hero-title {
+      font-size: 2.1rem;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+      opacity: 0.95;
+    }
+    
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 0.75rem;
+    }
+    
+    .hero-subtext {
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+    
+    /* 按鈕樣式可以依照你原本的 btn 類別調整 */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+    
+    .btn-primary {
+      background-color: #00a0ff;
+      color: #001326;
+      border-color: #00a0ff;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background-color: #34b6ff;
+      border-color: #34b6ff;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    /* 左右箭頭貼邊 */
+    .hero-nav {
+      width: 42px;
+      height: 42px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      color: #ffffff;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      position: absolute;   /* ← 必加：讓箭頭浮在圖片上 */
+      top: 50%;             /* ← 垂直置中 */
+      transform: translateY(-50%);
+      z-index: 10;          /* ← 讓箭頭永遠在最上層 */
+      border-radius: 50%;
+    }
+    
+    .hero-nav-prev {
+      left: 0.1rem;   /* 往左貼一點，數字越大越靠邊 */
+    }
+    
+    .hero-nav-next {
+      right: 0.1rem;  /* 往右貼一點 */
+    }
+    
+    .hero-nav:hover {
+      background: rgba(255, 255, 255, 0.15);  /* 淡淡白霧 */
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    /* 小圓點 */
+      .hero-dots-bottom-right {
+        position: absolute;
+        bottom: 1.5rem;
+        right: 2rem;
+        z-index: 3;
+        display: flex;
+        gap: 0.4rem;
+      }
+      
+      .hero-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+      }
+      
+      .hero-dot.active {
+        width: 20px;
+        background-color: #ffffff;
+      }
+
+      .hero {
+        background: radial-gradient(circle at top left, #1c3c57 0, #020c14 55%);
+        padding: 0;   /* 👉 不要上下留白 */
+      }
+      
+      .hero-slider-full {
+        position: relative;
+        width: 100%;
+        height: 70vh;
+        min-height: 520px;
+        
+        background: radial-gradient(circle at top left, #1c3c57 0, #020c14 55%); 
+        /* ⭐ 把藍色背景移到這裡 */
+      
+        overflow: hidden;
+        border-radius: 0;
+      }
+      
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;      /* 👉 圖片不變形、滿版鋪滿 */
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transform: scale(1.05);
+        transition: opacity 0.8s ease, transform 1.2s ease;
+      
+        pointer-events: none;  /* 👉 不會遮到 active 的連結 */
+      }
+      
+      .hero-slide.active {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto; /* 👉 可以點連結 */
+        z-index: 1;
+      }
+      .slide-link {
+        position: absolute;
+        inset: 0;           /* 讓超連結覆蓋整張圖片 */
+        z-index: 10;         /* 高於背景圖 */
+        display: block;
+        text-decoration: none;
+      }
+    
+    /* RWD 調整 */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 2.5rem 0;
+      }
+    
+      .hero-overlay {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+      }
+    
+      .hero-title {
+        font-size: 1.6rem;
+      }
+    
+      .hero-dots {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+      }
+    }
+
+    
+/* 手機版先不用 mega menu，之後再做 RWD 菜單 */
+  @media (max-width: 720px) {
+    .nav-links {
+      display: none; /* 先整排藏起來，之後可以做 hamburger menu */
+    }
+  }
+
+
+    /* ===== 主視覺區（Hero） ===== */
+    /* Hero section 不要背景也不要 padding */
+    .hero {
+      padding: 0;
+      background: none;   /* ⭐ 移除藍色背景 */
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #8fb5d5;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-text {
+      font-size: 15px;
+      color: #d6e1ea;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: #9fb4c5;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: #1f6fb5;
+      border-color: #1f6fb5;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: #155186;
+      border-color: #155186;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border-color: #7fa6c9;
+      color: #e1edf7;
+    }
+
+    .btn-outline:hover {
+      background-color: #ffffff;
+      color: #020c14;
+      transform: translateY(-1px);
+    }
+
+    .hero-badge {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #9fb4c5;
+    }
+
+    .hero-image {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      background: #071018;
+    }
+
+    .hero-image-placeholder {
+      height: 260px;
+      background: linear-gradient(135deg, #2a4f6c, #1e2d3a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d6e1ea;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ===== 通用區塊樣式 ===== */
+    
+    section {
+      padding: 40px 0;
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 100px;
+      margin-bottom: 20px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7a8692;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .section-big-title {
+      font-size: 40px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .section-text {
+      font-size: 14px;
+      color: #555f68;
+      max-width: 620px;
+    }
+
+    .section-link {
+      font-size: 13px;
+      color: #205f9d;
+      white-space: nowrap;
+    }
+
+    .section-link-lmvj {
+      font-size: 13px;
+      color: #205f9d;
+      white-space: nowrap;
+      position: relative;
+      top: 4px;      /* 想再低一點可以改 3px 或 4px */
+    }
+        
+    .section-link:hover {
+      text-decoration: underline;
+    }
+
+     .section-link-lmvj:hover {
+      text-decoration: underline;
+    }
+    
+      /* ===== Our Group 區 ===== */    
+      .vwg-opening {
+        padding: 70px 0 60px;
+        background: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      
+      .vwg-opening-inner {
+        max-width: 760px;        /* 澳洲官網差不多 760px */
+        margin: 0 auto;
+        text-align: center;       /* ⭐ 重點：置中 */
+      }
+      
+      .vwg-opening-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #0b1116;
+      }
+      
+      .vwg-opening-subtitle {
+        font-size: 18px;
+        font-weight: 500;
+        color: #475569;
+        margin-bottom: 18px;
+      }
+      
+      .vwg-opening-text {
+        font-size: 16px;
+        color: #4a5568;
+        line-height: 1.8;
+      }
+
+    
+    /* ===== Our Commitments 區 ===== */
+    .commitments {
+      background-color: #f5f5f5;
+    }
+
+    .commitments-content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: end;
+    }
+
+    .commitments-text p {
+      font-size: 14px;
+      color: #444c55;
+      margin-bottom: 12px;
+    }
+    
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      background-color: #012734;
+      color: #ffffff;
+    }
+
+    .commitments-visual {
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, #1c5f7a, #04141d);
+      padding: 22px 20px;
+      color: #e4f0f7;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+      font-size: 13px;
+      position:relative;
+    }
+
+    .commitments-visual-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .commitments-visual-list {
+      list-style: none;
+    }
+
+    .commitments-visual-list li {
+      margin-bottom: 6px;
+      display: inline-flex;
+      align-items: center;
+    }
+        
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      margin-right: 6px;           /* 重點：只留右邊距離 */
+      flex-shrink: 0;
+    }
+
+    /* ===== Latest Articles 區 ===== */
+    .articles {
+      background-color: #ffffff;
+      border-top: 1px solid #dde3ea;
+      border-bottom: 1px solid #dde3ea;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .article-card {
+      background-color: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 18px rgba(10, 26, 44, 0.05);
+      transition: transform .25s ease, box-shadow .25s ease;
+      text-decoration: none;   /* 變成 <a> 後，去掉底線 */
+      color: inherit;          /* 文字顏色沿用原本設定 */
+      cursor: pointer;         /* 滑鼠變成手指 */
+    }
+    
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(10, 26, 44, 0.12);
+    }
+
+    .article-media {
+      width: 100%;
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .article-body {
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      color: #7a8692;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .article-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .article-excerpt {
+      font-size: 13px;
+      color: #4c5660;
+      flex: 1;
+    }
+    
+    /* ===== 最新新聞字卡（有圖片 16:9） ===== */
+    
+    .news-card {
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 18px rgba(10, 26, 44, 0.06);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(10, 26, 44, 0.12);
+    }
+    
+    /* 16:9 圖片 */
+    .news-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    /* 內容區 */
+    .news-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .news-meta {
+      font-size: 11px;
+      color: #6e7b88;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+    
+    .news-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e2732;
+    }
+    
+    .news-excerpt {
+      font-size: 13px;
+      color: #4a5563;
+      flex: 1;
+    }
+    
+    .news-link {
+      font-size: 13px;
+      color: #205f9d;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+    
+    .news-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Join Us 區 ===== */
+    .join{
+       background-color: #f5f5f5;
+    }
+    
+    /* 兩欄排版：左圖右文 */
+    .join-us-inner {
+      max-width: 1120px;
+      margin: 24px 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      align-items: flex-start;
+      background-color: #f5f5f5;
+    }
+    
+    /* 左邊圖片卡片外框 */
+    .join-us-image-card {
+      flex: 0 0 420px;     /* 固定寬度 480px，看起來比較像一個穩定的卡片 */
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* 圖片本體 + hover 動畫 */
+    .join-us-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    
+    .join-us-image-card:hover img {
+      transform: scale(1.08);       /* 滑過去微放大 */
+      filter: brightness(1.03);     /* 稍微變亮，看起來比較「聚焦」 */
+    }
+    
+    /* 右邊文字區 */
+   .join-us-content {
+    font-size: 14px;
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 1.5rem;   /* 往右退多一點（原本 1.5rem） */
+    padding-top: 0.75rem; /* 往下壓一點，不要貼著圖片上緣 */
+  }
+      
+    .join-us-content p {
+      line-height: 1.7;
+      margin-bottom: 0.4rem;
+    }
+    
+    /* 底部：一條直線 + LinkedIn 小框框 */
+    .join-us-footer {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    /* 那條直線 */
+    .join-us-line {
+      flex: 1;
+      max-width: 345px;
+      height: 1px;
+      background-color: #d1d5db; /* 淺灰，如果背景很深可以改成 #ffffff */
+    }
+    
+    /* LinkedIn 小框框 */
+    .linkedin-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid #0a66c2; /* LinkedIn 藍 */
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #0a66c2;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .linkedin-icon {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+    /* hover 效果 */
+    .linkedin-pill:hover {
+      background: #2669b2;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    }
+    
+    /* 小螢幕排版調整：改成上下排 */
+    @media (max-width: 768px) {
+      .join-us-inner {
+        flex-direction: column;
+      }
+    
+      .join-us-content p {
+        max-width: 100%;
+      }
+    }
+
+/* ===== Discover more 區 ===== */
+      .discover {
+        background-color: #012734;
+        padding: 60px 0 70px;
+        border-top: 1px solid #e5e7eb;
+      }
+      
+      .discover-header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+      
+      .discover-kicker {
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+      
+      .discover-heading {
+        font-size: 24px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      
+      .discover-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+      
+      /* 單張卡片 */
+      .discover-card {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      /* 背景圖片 */
+      .discover-image {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.4s ease, filter 0.4s ease;
+      }
+      
+      /* 上層內容（標籤 + 標題 + 按鈕） */
+      .discover-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 18px 18px 20px;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.55),
+          rgba(0, 0, 0, 0.15),
+          transparent
+        );
+        color: #ffffff;
+        transition: background 0.4s ease, color 0.4s ease;
+      }
+      
+      .discover-tag {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        opacity: 0.85;
+        margin-bottom: 4px;
+      }
+      
+      .discover-title {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.5;
+        margin-bottom: 10px;
+      }
+      
+      /* 按鈕樣式 */
+       .discover-btn {
+          position: absolute;
+          right: 18px;
+          bottom: 18px;
+        
+          display: inline-flex;
+          padding: 6px 14px;
+        
+          font-size: 13px;
+          font-weight: 600;
+          text-decoration: none;
+        
+          border-radius: 999px;
+          border: 1px solid #fff;
+          background: rgba(255,255,255,.12);
+          color: #fff;
+        
+          cursor: pointer;
+          transition: background .25s ease, color .25s ease,
+                      border-color .25s ease, transform .2s ease;
+        }
+
+      
+      /* hover 效果：圖片模糊 + 反白 + 按鈕變藍底 */
+      .discover-card:hover .discover-image {
+        transform: scale(1.05);
+        filter: brightness(1.3) blur(2px); /* ⭐ 模糊＋變亮 */
+      }
+      
+      .discover-card:hover .discover-overlay {
+        background: rgba(255, 255, 255, 0.78); /* ⭐ 整塊偏白 */
+        color: #0b1116;                        /* 文字變深色 */
+      }
+      
+      .discover-card:hover .discover-btn {
+        border-color: #012734;
+        background: #012734;
+        color: #ffffff;
+        transform: translateY(-1px);
+      }
+
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #012734;
+      color: #c2d0dc;
+      font-size: 12px;
+      padding: 18px 0;
+      margin-top: 24px;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #8d9cab;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      color: #7d8c9b;
+    }
+
+    /* ===== RWD ===== */
+    @media (max-width: 880px) {
+      .hero-grid,
+      .commitments-content,
+      .articles-grid,
+      .join-grid,
+      .discover-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .articles-grid {
+        gap: 16px;
+      }
+
+      .discover-grid {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 32px 0 28px;
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .hero-image-placeholder {
+        height: 210px;
+      }
+
+      section {
+        padding: 28px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 導覽列 -->
+  <header>
+    <div class="container nav">
+      <div class="nav-left">
+        <a href="https://manggae1013.github.io/vgt.github.io/">
+          <span>VOLKSWAGEN GROUP TAIWAN</span>
+        </a>
+      </div>
+  
+      <!-- 右側：選單 + 語言 / 搜尋 -->
+      <div class="nav-right">
+        <nav class="nav-links">
+          <ul>
+            <!-- 集團：有 mega menu 的選項 -->
+            <li class="nav-item has-mega">
+              <a href="#group">集團背景</a>
+        
+              <div class="mega-menu">
+                <div class="mega-inner">
+                  <!-- 左側：台灣福斯介紹 -->
+                  <div class="mega-left">
+                    <div class="mega-label">Our Group</div>
+                    <h3 class="mega-title">台灣福斯汽車</h3>
+                    <p class="mega-text">
+                      台灣福斯汽車自 2015 年 1 月 1 日正式營運，不僅象徵德國福斯汽車總部對於台灣市場的高度重視，更充分展現深耕在地市場的堅定決心！
+                    </p>
+                    <p class="mega-text">
+                      台灣福斯汽車旨在為移動服務提供最佳解決方案，並且成為一個被真心喜愛的品牌。
+                    </p>
+        
+                    <a class="mega-more" href="#group">
+                      了解更多 →
+                    </a>
+                  </div>
+        
+                  <!-- 右側：三個分區連結 -->
+                  <div class="mega-right">
+                    <a class="mega-box" href="#group">
+                      <span class="mega-box-title">集團願景</span>
+                      <span class="mega-box-text">了解我們對未來移動、永續經營與在地承諾的長期願景。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#group">
+                      <span class="mega-box-title">集團策略</span>
+                      <span class="mega-box-text">聚焦電動化、數位化與在地化佈局，將全球優勢轉化為台灣市場機會。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#group">
+                      <span class="mega-box-title">全球佈局</span>
+                      <span class="mega-box-text">從全球研發與生產網絡，到台灣授權經銷與服務據點的完整布局。</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+        
+            <!-- 品牌：也有自己的 mega menu -->
+            <li class="nav-item has-mega">
+              <a href="#brands">品牌特色</a>
+        
+              <div class="mega-menu">
+                <div class="mega-inner">
+                  <!-- 左側：品牌說明 -->
+                  <div class="mega-left">
+                    <div class="mega-label">Our Brands</div>
+                    <h3 class="mega-title">多元品牌，滿足不同用車需求</h3>
+                    <p class="mega-text">
+                      通過福斯汽車、福斯商旅、奧迪汽車及斯柯達汽車，福斯集團望能透過銷售人員的專業培訓、售後服務的全面優化，以及線上線下通路的持續發展，打造最令消費者信賴的品牌。
+                    </p>
+        
+                    <a class="mega-more" href="#brands">
+                      了解更多 →
+                    </a>
+                  </div>
+        
+                  <!-- 右側：簡單分成三種品牌面向（之後可以改成實際連結頁） -->
+                  <div class="mega-right">
+                    <a class="mega-box" href="#brands">
+                      <span class="mega-box-title">乘用車品牌</span>
+                      <span class="mega-box-text">Volkswagen 乘用車與 Škoda，為不同生活風格提供多元選擇。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#brands">
+                      <span class="mega-box-title">豪華與性能</span>
+                      <span class="mega-box-text">Audi 等品牌以設計、科技與性能，詮釋駕馭樂趣與品味。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#brands">
+                      <span class="mega-box-title">商用與未來移動</span>
+                      <span class="mega-box-text">Volkswagen 商旅等車款，支援企業與日常用車的多元需求。</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+        
+            <!-- 企業承諾：也有自己的 mega menu -->
+            <li class="nav-item has-mega">
+              <a href="#commitments">企業承諾</a>
+        
+              <div class="mega-menu">
+                <div class="mega-inner">
+                  <!-- 左側：企業承諾說明 -->
+                  <div class="mega-left">
+                    <div class="mega-label">Our Commitments</div>
+                    <h3 class="mega-title">以永續與誠信為核心的企業轉型</h3>
+                    <p class="mega-text">
+                      福斯集團以永續發展為核心推動企業轉型，從電動化、智慧科技到碳中和路徑皆積極布局。同時堅守誠信透明、重視安全與品質，以人為本打造多元包容的企業文化，致力提供更可信賴、創新且永續的移動解決方案。
+                    </p>
+        
+                    <a class="mega-more" href="#commitments">
+                      了解更多 →
+                    </a>
+                  </div>
+        
+                  <!-- 右側：三個可點小標 -->
+                  <div class="mega-right">
+                    <a class="mega-box" href="#commitments">
+                      <span class="mega-box-title">創新精神</span>
+                      <span class="mega-box-text">以數位化與智慧科技，持續優化產品與服務體驗。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#commitments">
+                      <span class="mega-box-title">永續發展</span>
+                      <span class="mega-box-text">從節能車款、電動化佈局到減碳行動，實踐 ESG 承諾。</span>
+                    </a>
+        
+                    <a class="mega-box" href="#commitments">
+                      <span class="mega-box-title">Electrify Taiwan</span>
+                      <span class="mega-box-text">推動電動車生態系發展，結合充電佈局與在地合作夥伴。</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+        
+                <!-- 新聞：也有自己的 mega menu -->
+            <li class="nav-item has-mega">
+              <a href="#newsroom">新聞專區</a>
+        
+              <div class="mega-menu">
+                <div class="mega-inner">
+                  <!-- 左側：新聞 -->
+                  <div class="mega-left">
+                    <div class="mega-label">Newsroom</div>
+                    <h3 class="mega-title">了解最新動態</h3>
+                    <p class="mega-text">
+                      隨時掌握最新新聞、品牌公告與產業趨勢，了解福斯集團及旗下品牌在台灣的最新動態與重要發展。
+                    </p>
+        
+                    <a class="mega-more" href="newsroom">
+                      了解更多 →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+        
+            <!-- 職缺：也有自己的 mega menu -->
+            <li class="nav-item has-mega">
+              <a href="#careers">就業機會</a>
+        
+              <div class="mega-menu">
+                <div class="mega-inner">
+                  <!-- 左側：職缺說明 -->
+                  <div class="mega-left">
+                    <div class="mega-label">Careers</div>
+                    <h3 class="mega-title">以「人」為本的企業精神</h3>
+                    <p class="mega-text">
+                      臺灣福斯致力於打造能讓員工成長、進步與發揮影響力的工作環境，同時，透過專業培訓、跨品牌合作與提倡多元包容的企業文化，我們支持每位同仁持續精進、創造價值並與公司共同前進。
+                    </p>
+        
+                    <a class="mega-more" href="#commitments">
+                      了解更多 →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            
+                    <!-- 聯繫我們：也有自己的 mega menu -->
+            <li class="nav-item has-mega">
+              <a href="#contactus">聯繫我們</a>
+        
+              <div class="mega-menu">
+                <div class="mega-inner">
+                  <!-- 左側：聯繫我們 -->
+                  <div class="mega-left">
+                    <div class="mega-label">Contact Us</div>
+                    <h3 class="mega-title">與我們交流</h3>
+                    <p class="mega-text">
+                      需要任何幫助或是有任何需求，都歡迎與我們聯絡。
+                    </p>
+        
+                    <a class="mega-more" href="#contact-us">
+                      了解更多 →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+  
+          <!-- 新增：語言切換 + 搜尋 -->
+        <div class="nav-actions">
+        
+          <!-- 🌐 白色線條小地球 -->
+          <button class="icon-btn lang-toggle" type="button" aria-label="切換語言">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M3 12h18"></path>
+              <path d="M12 3a14 14 0 0 1 0 18"></path>
+              <path d="M12 3a14 14 0 0 0 0 18"></path>
+            </svg>
+          </button>
+        
+          <span class="nav-divider"></span>
+        
+          <!-- 🔍 白色線條放大鏡 -->
+          <button class="icon-btn search-toggle" type="button" aria-label="搜尋">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 放在 header 裡底下：語言選單 + 搜尋列 -->
+    <div class="nav-extra">
+      <!-- 語言選單：預設藏起來，按小地球才打開 -->
+      <div class="lang-menu">
+        <!-- 依照方案一：兩個不同 html 檔 -->
+        <a href="index.html">繁體中文</a>
+        <span class="lang-sep">/</span>
+        <a href="index-en.html">English</a>
+      </div>
+  
+      <!-- 搜尋欄：按🔍才打開 -->
+      <div class="search-bar">
+        <form action="#">
+          <input type="text" placeholder="搜尋關鍵字…" />
+          <button type="submit">搜尋</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const langToggle = document.querySelector(".lang-toggle");
+    const searchToggle = document.querySelector(".search-toggle");
+    const langMenu = document.querySelector(".lang-menu");
+    const searchBar = document.querySelector(".search-bar");
+
+    if (langToggle && langMenu) {
+      langToggle.addEventListener("click", function () {
+        // 切換語言選單開關
+        langMenu.classList.toggle("open");
+      });
+    }
+
+    if (searchToggle && searchBar) {
+      searchToggle.addEventListener("click", function () {
+        // 切換搜尋列開關
+        searchBar.classList.toggle("open");
+
+        // 打開後自動 focus 輸入框
+        if (searchBar.classList.contains("open")) {
+          const input = searchBar.querySelector("input");
+          if (input) input.focus();
+        }
+      });
+    }
+  });
+</script>
+
+  <!-- Hero 區 -->
+  <main>
+    <section class="hero">
+      <div class="hero-slider hero-slider-full">
+        <!-- 幻燈片 1 -->
+        <div class="hero-slide active" style="background-image: url('images/hero1.jpg');">
+          <a class="slide-link" href="https://www.volkswagen.com.tw/zh.html"></a>
+        </div>
+        <!-- 幻燈片 2 -->
+        <div class="hero-slide" style="background-image: url('images/hero2.jpg');">
+          <a class="slide-link" href="https://www.volkswagen-commercial.com.tw/zh.html"></a>
+        </div>
+        <!-- 幻燈片 3 -->
+        <div class="hero-slide" style="background-image: url('images/hero3.jpg');">
+          <a class="slide-link" href="https://www.audi.com.tw/zh/"></a>
+        </div>
+        <!-- 幻燈片 4 -->
+        <div class="hero-slide" style="background-image: url('images/hero4.jpg');">
+          <a class="slide-link" href="https://www.skoda.com.tw/"></a>
+        </div>
+        
+        <!-- 左右切換按鈕 -->
+        <button class="hero-nav hero-nav-prev" aria-label="上一張">&#10094;</button>
+        <button class="hero-nav hero-nav-next" aria-label="下一張">&#10095;</button>
+    
+        <!-- 右下角小點點 -->
+        <div class="hero-dots hero-dots-bottom-right">
+          <button class="hero-dot active" data-index="0" aria-label="第 1 張"></button>
+          <button class="hero-dot" data-index="1" aria-label="第 2 張"></button>
+          <button class="hero-dot" data-index="2" aria-label="第 3 張"></button>
+          <button class="hero-dot" data-index="3" aria-label="第 4 張"></button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slider = document.querySelector(".hero-slider");
+        if (!slider) return; // 安全檢查，避免其他頁面報錯
+    
+        const slides = slider.querySelectorAll(".hero-slide");
+        const dots = slider.querySelectorAll(".hero-dot");
+        const prevBtn = slider.querySelector(".hero-nav-prev");
+        const nextBtn = slider.querySelector(".hero-nav-next");
+    
+        let currentIndex = 0;
+        const intervalTime = 5000; // 每 5 秒換一張
+        let timer = null;
+    
+        function goToSlide(index) {
+          slides[currentIndex].classList.remove("active");
+          dots[currentIndex].classList.remove("active");
+    
+          currentIndex = (index + slides.length) % slides.length;
+    
+          slides[currentIndex].classList.add("active");
+          dots[currentIndex].classList.add("active");
+        }
+    
+        function nextSlide() {
+          goToSlide(currentIndex + 1);
+        }
+    
+        function prevSlide() {
+          goToSlide(currentIndex - 1);
+        }
+    
+        function resetTimer() {
+          if (timer) {
+            clearInterval(timer);
+          }
+          timer = setInterval(nextSlide, intervalTime);
+        }
+    
+        // 左右按鈕
+        if (nextBtn) {
+          nextBtn.addEventListener("click", function () {
+            nextSlide();
+            resetTimer();
+          });
+        }
+    
+        if (prevBtn) {
+          prevBtn.addEventListener("click", function () {
+            prevSlide();
+            resetTimer();
+          });
+        }
+    
+        // 小圓點點擊
+        dots.forEach(function (dot) {
+          dot.addEventListener("click", function () {
+            const index = parseInt(dot.getAttribute("data-index"), 10);
+            goToSlide(index);
+            resetTimer();
+          });
+        });
+    
+        // 啟動自動輪播
+        resetTimer();
+      });
+    </script>
+    
+    <!-- Our Group 區 -->
+    <section class="vwg-opening">
+      <div class="container">
+        <div class="vwg-opening-inner">
+          <h2 class="vwg-opening-title">Volkswagen Group Taiwan</h2>
+          <p class="vwg-opening-subtitle">
+            德制經典 百年工藝，進化科技 定義未來
+          </p>
+          <p class="vwg-opening-text">
+            作為德國福斯集團在台唯一官方分公司，台灣福斯汽車自 2015 年正式營運以來，
+            結合 Volkswagen、Volkswagen 商旅、Audi 與 Škoda 四大品牌優勢，致力提供創新、安全與永續的移動體驗。
+          </p>
+        </div>
+      </div>
+    </section>         
+    
+    <!-- Our Commitments 區 -->
+    <section class="commitments" id="commitments">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Our Commitments</div>
+            <h2 class="section-title">我們的承諾</h2>
+            <p class="section-text">
+              福斯汽車至今已拓展至全球超過 140 個市場，並且於 12 個國家中擁有逾 29 處生產據點。2023 年，福斯汽車於全球出售 487 萬輛各式車款，其中包括暢銷的 Polo、T-Cross、T-Roc、Golf 及 Tiguan。時至今日，福斯汽車在全球聘僱 170,000 名員工，更有多達 7,700 處經銷商與其 74,000 位專業同仁，為喜愛 Volkswagen 品牌的消費者服務。</p>
+          </div>
+          <a href="#" class="section-link-lmvj">Learn more</a>
+        </div>
+
+        <div class="commitments-content">
+          <div class="commitments-text">
+            <p>
+              秉持從「人」出發的核心思維，台灣福斯汽車透過銷售人員的專業培訓、售後服務的全面優化，以及線上線下通路的持續發展，打造最令消費者信賴的品牌，同時藉由不斷創新、與時俱進、與消費者攜手共創品牌價值，台灣福斯汽車致力於建立最堅實的消費者網絡。</p>
+            <p>台灣福斯汽車由衷期盼在未來，繼續推出更多創新服務與先進車款，矢志以「安全科技」、「卓越品質」及「駕馭樂趣」，為消費者打造乘用車市場中最優異的顧客體驗。</p>
+            <div class="pill-list">
+              <span class="pill">創新科技</span>
+              <span class="pill">專業服務</span>
+              <span class="pill">全球布局</span>
+              <span class="pill">永續與減碳</span>
+            </div>
+          </div>
+          <aside class="commitments-visual">
+            <div class="commitments-visual-title">Forward. For Taiwan.</div>
+            <ul class="commitments-visual-list">
+              <li>
+                <span class="dot"></span>
+                <span>以先進科技陪伴每一次安心上路。</span>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <span>德系工藝，為每一趟旅程帶來值得信賴的品質。</span>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <span>讓每趟旅程，都成為充滿樂趣的日常時刻。</span>
+              </li>
+              <li>
+                <span class="dot"></span>
+                <span>以三大承諾為核心，與台灣前行，共同創造更美好的移動未來。</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Articles 區 -->
+    <section class="articles" id="newsroom">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Newsroom</div>
+            <h2 class="section-title">最新消息</h2>
+            <p class="section-text">
+              掌握台灣福斯的最新新聞與品牌活動，快速了解公司的重點訊息。
+            </p>
+          </div>
+          <a href="#" class="section-link">View all</a>
+        </div>
+
+        <!-- 卡片會被 JS 填進來 -->
+        <div class="articles-grid" id="latest-news"></div>
+      </div>
+    </section>
+    
+    <script>
+      (function () {
+        const grid = document.querySelector("#latest-news");
+        if (!grid) return;
+    
+        fetch("news.json")
+          .then(res => {
+            if (!res.ok) throw new Error("news.json 讀取失敗");
+            return res.json();
+          })
+          .then(data => {
+            grid.innerHTML = data
+              .map(
+                n => `
+                  <a class="article-card" href="${n.url}">
+                    <!-- 上半：圖片（16:9） -->
+                    <div class="article-media"
+                         style="background-image:url('${n.image}')"></div>
+    
+                    <!-- 下半：文字 -->
+                    <div class="article-body">
+                      <div class="article-meta">
+                        <span>${n.date}</span>
+                        ${n.category ? `<span>${n.category}</span>` : ""}
+                        ${n.brand ? `<span>${n.brand}</span>` : ""}
+                      </div>
+    
+                      <h3 class="article-title">${n.title}</h3>
+                      <p class="article-excerpt">${n.excerpt}</p>
+                    </div>
+                  </a>
+                `
+              )
+              .join("");
+          })
+          .catch(err => {
+            console.error(err);
+            grid.innerHTML =
+              "<p style='font-size:14px;color:#999;'>暫時無法載入新聞內容。</p>";
+          });
+      })();
+    </script>
+
+    <!-- Join Us 區 -->
+    <section class="join" id="careers">
+      <div class="container">
+        <!-- 上面標題區：保持跟其他 section 一樣的 layout -->
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Careers</div>
+            <h2 class="section-title">加入我們</h2>
+            <p class="section-text">
+              德國福斯集團為全球汽車產業領導者，旗下擁有多達 12 個品牌，於全球 12 國設有超過 29 處生產基地，並以創新科技、卓越品質與駕馭樂趣，深受全球與台灣消費者喜愛。
+            </p>
+          </div>
+        </div>
+
+        <!-- 這裡才開始：左圖右文區塊 -->
+        <div class="join-us-inner">
+          <!-- 左邊圖片 -->
+          <figure class="join-us-image-card">
+            <a href="#" target="_blank">
+              <img src="images/VGT Office.jpg" alt="Volkswagen Group Taiwan Team">
+            </a>
+          </figure>
+
+          <!-- 右邊文字 + LinkedIn -->
+          <div class="join-us-content">
+            <div class="join-us-copy"> 
+              <p>
+                台灣福斯汽車為德國福斯集團 (Volkswagen Group) 在台唯一官方分公司，自 2015 年正式營運以來，致力深耕在地市場，打造值得信賴的汽車品牌。
+              </p>
+              <p>
+                我們秉持「以人為本」的核心理念，透過專業銷售與售後服務體系、數位化通路整合，打造全方位顧客體驗，更以電動化、智慧移動與數位創新為發展重點，持續引領市場潮流。
+              </p>
+              <p>
+                未來，台灣福斯汽車將持續以「安全科技、卓越品質、駕馭樂趣」為核心價值，為消費者創造更美好的移動生活體驗。
+              </p>
+              <p class="join-note">
+                歡迎您加入我們，一起創造更美好的移動生活體驗。
+              </p>
+            </div>
+
+            <!-- 底部：線 + LinkedIn 按鈕 -->
+            <div class="join-us-footer">
+              <span class="join-us-line"></span>
+              <a
+                href="https://www.linkedin.com/company/volkswagen-group-taiwan/"
+                target="_blank"
+                class="linkedin-pill"
+              >
+                <img src="images/linkedin-icon.png" alt="LinkedIn" class="linkedin-icon">
+                在 LinkedIn 查看職缺
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Discover more 區（新版：澳洲風格） -->
+    <section class="discover" id="brands">
+      <div class="container">
+        <div class="discover-header">
+          <p class="discover-kicker">Discover more</p>
+          <h2 class="discover-heading">探索更多</h2>
+        </div>
+
+      <div class="discover-grid">
+        <!-- 卡片 1：願景 -->
+        <div class="discover-card">
+          <div class="discover-image"
+               style="background-image:url('images/discover-vision.jpg');"></div>
+      
+          <div class="discover-overlay">
+            <span class="discover-tag">Our Vision</span>
+            <h3 class="discover-title">我們的願景</h3>
+      
+            <!-- 只有這顆能點 -->
+            <a class="discover-btn" href="vision.html">更多 &rarr;</a>
+          </div>
+        </div>
+      
+        <!-- 卡片 2：策略 -->
+        <div class="discover-card">
+          <div class="discover-image"
+               style="background-image:url('images/discover-strategy.jpg');"></div>
+      
+          <div class="discover-overlay">
+            <span class="discover-tag">Our Strategy</span>
+            <h3 class="discover-title">策略方針</h3>
+      
+            <a class="discover-btn" href="strategy.html">更多 &rarr;</a>
+          </div>
+        </div>
+      
+        <!-- 卡片 3：全球佈局 -->
+        <div class="discover-card">
+          <div class="discover-image"
+               style="background-image:url('images/discover-presence.jpg');"></div>
+      
+          <div class="discover-overlay">
+            <span class="discover-tag">Our Presence</span>
+            <h3 class="discover-title">全球佈局</h3>
+      
+            <a class="discover-btn" href="presence.html">更多 &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>© 2025 Volkswagen Group Taiwan. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Integrity & Compliance</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Volkswagen Group Taiwan</span>
+        <span>For internal demo use – GitHub Pages prototype.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
