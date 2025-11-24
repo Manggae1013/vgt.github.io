@@ -1004,9 +1004,24 @@
 
     /* ===== Discover more 區 ===== */
     .discover {
+      padding: 70px 0 60px;
       background-color: #012734;
+      border-bottom: 1px solid #e5e7eb;
     }
-
+      
+      .discover-inner {
+        max-width: 760px;        /* 澳洲官網差不多 760px */
+        margin: 0 auto;
+        text-align: center;       /* ⭐ 重點：置中 */
+      }
+      
+      .discover-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #0b1116;
+      }
+      
     .discover-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1028,11 +1043,6 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: #7a8692;
-    }
-
-    .discover-title {
-      font-size: 15px;
-      font-weight: 600;
     }
 
     .discover-text {
@@ -1632,11 +1642,7 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <div class="section-kicker">Discover more</div>
-            <h2 class="section-title">探索更多</h2>
-            <p class="section-text">
-              從全球品牌到台灣市場策略，我們結合在地需求與資源，為不同客群提供最合適的移動方案。
-            </p>
+            <h2 class="discover-title">Discover more</h2>
           </div>
         </div>
 
