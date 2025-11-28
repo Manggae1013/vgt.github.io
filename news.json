@@ -1,29 +1,29 @@
 [
   {
-    "date": "2025 / 08 / 06",
+    "date": "2025 / 11 / 25",
     "category": "Media Releases",
-    "brand": "VW Passenger Vehicles",
-    "title": "全新純電車款於台灣正式亮相，開啟新世代移動篇章",
-    "excerpt": "Volkswagen Group Taiwan 宣布全新純電車款於台灣正式上市，以創新科技與直覺操作體驗，回應日益成長的電動車市場需求。",
-    "url": "#",
-    "image": "images/news1.jpg"
+    "brand": "Volkswagen Taiwan",
+    "title": "熱血狂放靈魂 Volkswagen The new Polo GTI 席捲全台",
+    "excerpt": "Volkswagen 本月推出 The new Polo GTI 獲熱切矚目，首批 50 輛甫上市即銷售一空，台灣福斯汽車極力向德國原廠爭取追加生產，期待更多車迷能同享正統小鋼砲無與倫比的純粹駕馭樂趣。",
+    "url": "https://www.volkswagen.com.tw/zh/about-volkswagen/news/2025-11-25.html",
+    "image": "images/new1.jpg"
   },
   {
-    "date": "2025 / 05 / 14",
-    "category": "Corporate",
-    "brand": "Volkswagen Group Taiwan",
-    "title": "Volkswagen Group Taiwan 宣布關鍵管理團隊調整",
-    "excerpt": "為持續強化在台營運韌性與市場佈局，Volkswagen Group Taiwan 宣布管理團隊調整，以更敏捷的跨品牌協作回應快速變化的產業環境。",
-    "url": "#",
+    "date": "2025 / 11 / 20",
+    "category": "Media Releases",
+    "brand": "Audi Taiwan",
+    "title": "台灣奧迪榮獲 2025 年「臺灣客服中心評鑑」金獎殊榮 引領汽車賣場業 豎立品牌服務標竿",
+    "excerpt": "台灣奧迪再創佳績！在 2025 年臺灣客服中心評鑑中，憑藉卓越的客戶服務品質，自全台 146 家受評企業中脫穎而出，榮獲汽車賣場業金獎肯定。該獎項由臺灣服務稽核協會 (TSAA) 主辦、工商時報協辦，今年已邁入第四屆。評鑑透過專業神秘客團隊執行 438 件任務，橫跨全台 9 大產業，並以全球 COPC 客服中心標準為基準，全方位檢視企業官網、客服電話與客服信箱的應對品質，被視為客服領域的重要指標。",
+    "url": "https://www.audi.com.tw/zh/news-center/news-2025-07-12/1120-audi-service-awards/",
     "image": "images/news2.jpg"
   },
   {
-    "date": "2025 / 03 / 04",
+    "date": "2025 / 10 / 20",
     "category": "Events",
-    "brand": "All Brands",
-    "title": "Volkswagen Group Taiwan 參與大型車展，完整呈現電動與燃油產品陣容",
-    "excerpt": "於台灣指標車展中，我們攜手多個品牌共同展出最新車型，從純電休旅到經典性能車款，展現集團完整產品矩陣與未來方向。",
-    "url": "#",
+    "brand": "Volkswagen Group Taiwan",
+    "title": "新篇章啟動 — 歡迎來到 Volkswagen Group Taiwan 的新家",
+    "excerpt": "Volkswagen Group Taiwan 的全新辦公室正式落腳在充滿創意與活力的台北南港。匯聚科技、設計與合作的能量，象徵著我們邁向未來的重要一步。",
+    "url": "https://www.linkedin.com/posts/volkswagen-group-taiwan_volkswagengrouptaiwan-vgt-audi-activity-7391384313004679169-5MJm?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC5uvpkB8Oqv7V7GG-6Gw87TMSwwQuzngvQ",
     "image": "images/news3.jpg"
   }
 ]
