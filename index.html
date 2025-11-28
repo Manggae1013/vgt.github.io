@@ -962,8 +962,8 @@
     .article-meta {
       display: flex;
       align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
+      gap: 8px;
+      margin-bottom: 4px;
     }
 
     /* 日期 → 純文字 */
@@ -972,14 +972,16 @@
       color: #666;
     }
 
-    /* category & brand → 完全同樣樣式 */
-    .article-tag {
-      font-size: 12px;
-      color: #555;
-      background: #f0f0f0;
-      padding: 2px 6px;
-      border-radius: 999px;
-      line-height: 1;
+  /* category & brand：全大寫、有字距、無背景框 */
+   .article-tag {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #222;
+      background: none;
+      padding: 0;
+      border-radius: 0;
       display: inline-block;
     }
     
@@ -992,12 +994,13 @@
       margin-bottom: 8px;
     }
     
+    /* 內文 */
     .article-excerpt {
       font-size: 14px;
       color: #444;
     }
 
-    /* Title → 一行 + ... */
+/* Title 一行＋…（這段保留就好） */
     .article-title {
       font-size: 18px;
       font-weight: 700;
@@ -1008,9 +1011,9 @@
       margin-bottom: 8px;
     }
     
-    /* brand（與 category 間距） */
+/* brand：跟 category 一樣字體，只是獨立一行 */
     .article-brand {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     /* ===== 最新新聞字卡（有圖片 16:9） ===== */
@@ -1873,9 +1876,15 @@
         fetch("news.json")
           .then(res => {
             if (!res.ok) throw new Error("news.json 讀取失敗");
-            return res.json();            // ★ 這行一定要有
+            return res.json();
           })
           .then(data => {
+            // 👇 內文截斷：超過 max 字就加 ...
+            const truncate = (text, max) => {
+              if (!text) return "";
+              return text.length > max ? text.slice(0, max) + "..." : text;
+            };
+    
             grid.innerHTML = data
               .map(n => `
                 <a class="article-card" href="${n.url}">
@@ -1895,7 +1904,7 @@
     
                     <h3 class="article-title">${n.title}</h3>
     
-                    <p class="article-excerpt">${n.excerpt}</p>
+                    <p class="article-excerpt">${truncate(n.excerpt, 70)}</p>
     
                   </div>
                 </a>
@@ -1909,7 +1918,6 @@
           });
       })();
     </script>
-
 
     <!-- Join Us 區 -->
     <section class="join" id="careers">
