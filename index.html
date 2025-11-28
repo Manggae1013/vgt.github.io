@@ -1845,13 +1845,19 @@
           })
           .then(data => {
             grid.innerHTML = data
-              .map(
-                n => `
+              .map(n => {
+                // 文字截斷功能（你可自訂最大字數）
+                const truncate = (text, max = 50) => {
+                  if (!text) return "";
+                  return text.length > max ? text.slice(0, max) + "..." : text;
+                };
+          
+                return `
                   <a class="article-card" href="${n.url}">
                     <!-- 上半：圖片（16:9） -->
                     <div class="article-media"
                          style="background-image:url('${n.image}')"></div>
-    
+          
                     <!-- 下半：文字 -->
                     <div class="article-body">
                       <div class="article-meta">
@@ -1859,15 +1865,16 @@
                         ${n.category ? `<span>${n.category}</span>` : ""}
                         ${n.brand ? `<span>${n.brand}</span>` : ""}
                       </div>
-    
-                      <h3 class="article-title">${n.title}</h3>
-                      <p class="article-excerpt">${n.excerpt}</p>
+          
+                      <h3 class="article-title">${truncate(n.title, 40)}</h3>
+                      <p class="article-excerpt">${truncate(n.excerpt, 70)}</p>
                     </div>
                   </a>
-                `
-              )
+                `;
+              })
               .join("");
           })
+
           .catch(err => {
             console.error(err);
             grid.innerHTML =
