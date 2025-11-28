@@ -958,6 +958,7 @@
       flex-direction: column;
       gap: 6px;
       flex: 1;
+      background: #ffffff;
     }
 
     .article-meta {
@@ -968,8 +969,25 @@
       color: #7a8692;
       text-transform: uppercase;
       letter-spacing: 0.12em;
+      margin-bottom: 4px;
     }
 
+    .article-date {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* category & brand → 完全相同樣式 */
+    .article-tag {
+      font-size: 12px;
+      color: #555;
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 999px;
+      display: inline-block;
+      line-height: 1;
+    }
+    
     .article-meta span {
       font-size: 12px;
       color: #666;
@@ -981,10 +999,14 @@
     .article-title {
       font-size: 15px;
       font-weight: 600;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-bottom: 8px;
     }
 
     .article-excerpt {
-      font-size: 13px;
+      font-size: 14px;
       color: #4c5660;
       flex: 1;
     }
@@ -1001,7 +1023,6 @@
     .article-brand {
       font-size: 12px;
       color: #666;
-      background: #f0f0f0;
       display: inline-block;
       padding: 2px 6px;
       border-radius: 4px;
@@ -1866,41 +1887,33 @@
         if (!grid) return;
     
         fetch("news.json")
-          .then(res => {
-            if (!res.ok) throw new Error("news.json 讀取失敗");
-            return res.json();
-          })
           .then(data => {
             grid.innerHTML = data
-              .map(n => {
-                // 文字截斷功能（你可自訂最大字數）
-                const truncate = (text, max = 50) => {
-                  if (!text) return "";
-                  return text.length > max ? text.slice(0, max) + "..." : text;
-                };
+              .map(n => `
+                <a class="article-card" href="${n.url}">
+                  
+                  <div class="article-media"
+                       style="background-image:url('${n.image}'); height:160px;"></div>
           
-                return `
-                  <a class="article-card" href="${n.url}">
-                    <!-- 上半：圖片（16:9） -->
-                    <div class="article-media"
-                         style="background-image:url('${n.image}')"></div>
+                  <div class="article-body">
           
-                    <!-- 下半：文字 -->
-                    <div class="article-body">
-                      <div class="article-meta">
-                        <span>${n.date}</span>
-                        ${n.category ? `<span>${n.category}</span>` : ""}
-                      </div>
-                        ${n.brand ? `<div class="article-brand">${n.brand}</div>` : ""}
-                      
-                      <h3 class="article-title">${truncate(n.title, 20)}</h3>
-                      <p class="article-excerpt">${truncate(n.excerpt, 70)}</p>
+                    <div class="article-meta">
+                      <span class="article-date">${n.date}</span>
+                      ${n.category ? `<span class="article-tag">${n.category}</span>` : ""}
                     </div>
-                  </a>
-                `;
-              })
+          
+                    ${n.brand ? `<span class="article-tag article-brand">${n.brand}</span>` : ""}
+          
+                    <h3 class="article-title">${n.title}</h3>
+          
+                    <p class="article-excerpt">${n.excerpt}</p>
+          
+                  </div>
+                </a>
+              `)
               .join("");
           })
+
 
           .catch(err => {
             console.error(err);
